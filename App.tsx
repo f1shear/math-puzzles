@@ -1,24 +1,52 @@
 /**
  * Math Puzzles App
- * React Native app with bottom tab navigation
+ * React Native app with bottom tab navigation and Redux state management
  *
  * @format
  */
 
-import React from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import React, { useEffect } from 'react';
+import { StatusBar, useColorScheme, AppState } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
 
+import { store } from './src/store';
+import { useAppDispatch } from './src/store/hooks';
+import { loadAppData, saveLastActive } from './src/store/slices/appSlice';
 import HomeScreen from './src/screens/HomeScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 
-function App() {
+function AppContent() {
   const isDarkMode = useColorScheme() === 'dark';
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // Load initial data from AsyncStorage
+    dispatch(loadAppData());
+
+    // Set initial lastActive when app loads
+    const now = new Date().toISOString();
+    dispatch(saveLastActive(now));
+
+    // Listen for app state changes
+    const handleAppStateChange = (nextAppState: string) => {
+      if (nextAppState === 'active') {
+        const activeTime = new Date().toISOString();
+        dispatch(saveLastActive(activeTime));
+      }
+    };
+
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      subscription?.remove();
+    };
+  }, [dispatch]);
 
   return (
     <SafeAreaProvider>
@@ -54,6 +82,14 @@ function App() {
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
+  );
+}
+
+function App() {
+  return (
+    <Provider store={store}>
+      <AppContent />
+    </Provider>
   );
 }
 
