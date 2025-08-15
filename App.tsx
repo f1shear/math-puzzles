@@ -1,16 +1,21 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * Math Puzzles App
+ * React Native app with bottom tab navigation
  *
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import React from 'react';
+import { StatusBar, useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import HomeScreen from './src/screens/HomeScreen';
+import ProgressScreen from './src/screens/ProgressScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+
+const Tab = createBottomTabNavigator();
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,28 +23,38 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarActiveTintColor: '#007AFF',
+            tabBarInactiveTintColor: '#8E8E93',
+            headerShown: false,
+          }}>
+          <Tab.Screen 
+            name="Home" 
+            component={HomeScreen}
+            options={{
+              tabBarLabel: 'Home',
+            }}
+          />
+          <Tab.Screen 
+            name="Progress" 
+            component={ProgressScreen}
+            options={{
+              tabBarLabel: 'Progress',
+            }}
+          />
+          <Tab.Screen 
+            name="Settings" 
+            component={SettingsScreen}
+            options={{
+              tabBarLabel: 'Settings',
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
