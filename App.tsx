@@ -11,9 +11,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
+import './unistyles';
 import { store } from './src/store';
-import { useAppDispatch } from './src/store/hooks';
+import { useAppDispatch, useAppSelector } from './src/store/hooks';
 import { loadAppData, saveLastActive } from './src/store/slices/appSlice';
 import HomeScreen from './src/screens/HomeScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
@@ -22,8 +24,9 @@ import SettingsScreen from './src/screens/SettingsScreen';
 const Tab = createBottomTabNavigator();
 
 function AppContent() {
-  const isDarkMode = useColorScheme() === 'dark';
+  const systemColorScheme = useColorScheme();
   const dispatch = useAppDispatch();
+  const { theme } = useAppSelector((state) => state.app);
 
   useEffect(() => {
     // Load initial data from AsyncStorage
@@ -48,14 +51,32 @@ function AppContent() {
     };
   }, [dispatch]);
 
+  // Handle theme changes
+  useEffect(() => {
+    if (theme === 'auto') {
+      UnistylesRuntime.setAdaptiveThemes(true);
+    } else {
+      UnistylesRuntime.setAdaptiveThemes(false);
+      UnistylesRuntime.setTheme(theme);
+    }
+  }, [theme]);
+
+  // Determine current theme for status bar
+  const isDarkMode = theme === 'auto' 
+    ? systemColorScheme === 'dark'
+    : theme === 'dark';
+
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={{
-            tabBarActiveTintColor: '#007AFF',
+            tabBarActiveTintColor: UnistylesRuntime.themeName === 'dark' ? '#0A84FF' : '#007AFF',
             tabBarInactiveTintColor: '#8E8E93',
+            tabBarStyle: {
+              backgroundColor: UnistylesRuntime.themeName === 'dark' ? '#1C1C1E' : '#F9F9F9',
+            },
             headerShown: false,
           }}>
           <Tab.Screen 

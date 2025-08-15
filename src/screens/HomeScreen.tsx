@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { useAppSelector } from '../store/hooks';
 
 const HomeScreen = () => {
@@ -34,46 +35,50 @@ const HomeScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme, rt) => ({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: theme.colors.background,
   },
   title: {
-    fontSize: 24,
+    fontSize: 32 * rt.fontScale,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: theme.spacing(1),
+    color: theme.colors.text,
   },
   subtitle: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 24,
+    fontSize: 16 * rt.fontScale,
+    color: theme.colors.textSecondary,
+    marginBottom: theme.spacing(4),
   },
   statusContainer: {
-    backgroundColor: '#fff',
-    padding: 16,
-    borderRadius: 8,
-    shadowColor: '#000',
+    backgroundColor: theme.colors.surface,
+    padding: theme.spacing(2),
+    borderRadius: 12,
+    shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
     minWidth: 280,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
   },
   statusTitle: {
-    fontSize: 18,
+    fontSize: 18 * rt.fontScale,
     fontWeight: '600',
-    marginBottom: 12,
+    marginBottom: theme.spacing(2),
     textAlign: 'center',
+    color: theme.colors.text,
   },
   statusText: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 6,
+    fontSize: 14 * rt.fontScale,
+    color: theme.colors.textSecondary,
+    marginBottom: 4,
     textAlign: 'center',
   },
-});
+}));
 
 export default HomeScreen;
