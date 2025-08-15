@@ -13,23 +13,36 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Text style={styles.subtitle}>Welcome to Math Puzzles</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>Math Puzzles</Text>
+        <Text style={styles.subtitle}>Challenge your mind with beautiful puzzles</Text>
 
-      <View style={styles.statusContainer}>
-        <Text style={styles.statusTitle}>App Status</Text>
-        {isLoaded ? (
-          <>
-            <Text style={styles.statusText}>
-              First Launch: {isFirstLaunch ? 'Yes' : 'No'}
-            </Text>
-            <Text style={styles.statusText}>
-              Last Active: {formatDate(lastActive)}
-            </Text>
-          </>
-        ) : (
-          <Text style={styles.statusText}>Loading...</Text>
-        )}
+        <View style={styles.statusCard}>
+          <View style={styles.statusHeader}>
+            <Text style={styles.statusTitle}>App Status</Text>
+            <Text style={styles.statusSubtitle}>Your journey so far</Text>
+          </View>
+          
+          {isLoaded ? (
+            <View style={styles.statusContent}>
+              <View style={styles.statusRow}>
+                <Text style={styles.statusLabel}>First Launch</Text>
+                <Text style={styles.statusValue}>
+                  {isFirstLaunch ? 'Welcome! 👋' : 'Returning User ⭐'}
+                </Text>
+              </View>
+              
+              <View style={styles.statusRow}>
+                <Text style={styles.statusLabel}>Last Active</Text>
+                <Text style={styles.statusValue}>
+                  {formatDate(lastActive)}
+                </Text>
+              </View>
+            </View>
+          ) : (
+            <Text style={styles.loadingText}>Loading your data...</Text>
+          )}
+        </View>
       </View>
     </View>
   );
@@ -38,46 +51,97 @@ const HomeScreen = () => {
 const styles = StyleSheet.create((theme, rt) => ({
   container: {
     flex: 1,
+    backgroundColor: theme.colors.background,
+    padding: theme.spacing(2),
+  },
+  content: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.colors.background,
+    paddingHorizontal: theme.spacing(3),
   },
   title: {
-    fontSize: 32 * rt.fontScale,
-    fontWeight: 'bold',
+    fontSize: theme.typography.fontSize.display * rt.fontScale,
+    fontWeight: theme.typography.fontWeight.bold,
+    lineHeight: theme.typography.fontSize.display * rt.fontScale * theme.typography.lineHeight.tight,
     marginBottom: theme.spacing(1),
     color: theme.colors.text,
+    textAlign: 'center',
+    fontFamily: theme.typography.fontFamily.bold,
   },
   subtitle: {
-    fontSize: 16 * rt.fontScale,
+    fontSize: theme.typography.fontSize.lg * rt.fontScale,
+    fontWeight: theme.typography.fontWeight.regular,
     color: theme.colors.textSecondary,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(6),
+    textAlign: 'center',
+    fontFamily: theme.typography.fontFamily.regular,
   },
-  statusContainer: {
+  statusCard: {
     backgroundColor: theme.colors.surface,
-    padding: theme.spacing(2),
-    borderRadius: 12,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    minWidth: 280,
+    borderRadius: theme.borderRadius.xl,
+    padding: theme.spacing(3),
+    width: '100%',
+    maxWidth: 340,
+    
+    // Modern shadow system
+    shadowColor: theme.colors.text,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 8,
+    
+    // Subtle border
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderLight,
+  },
+  statusHeader: {
+    marginBottom: theme.spacing(3),
   },
   statusTitle: {
-    fontSize: 18 * rt.fontScale,
-    fontWeight: '600',
-    marginBottom: theme.spacing(2),
-    textAlign: 'center',
+    fontSize: theme.typography.fontSize.xl * rt.fontScale,
+    fontWeight: theme.typography.fontWeight.semibold,
     color: theme.colors.text,
+    textAlign: 'center',
+    fontFamily: theme.typography.fontFamily.semibold,
+    marginBottom: theme.spacing(1),
   },
-  statusText: {
-    fontSize: 14 * rt.fontScale,
+  statusSubtitle: {
+    fontSize: theme.typography.fontSize.sm * rt.fontScale,
+    color: theme.colors.textTertiary,
+    textAlign: 'center',
+    fontFamily: theme.typography.fontFamily.regular,
+  },
+  statusContent: {
+    gap: theme.spacing(2),
+  },
+  statusRow: {
+    backgroundColor: theme.colors.surfaceElevated,
+    paddingVertical: theme.spacing(2),
+    paddingHorizontal: theme.spacing(3),
+    borderRadius: theme.borderRadius.lg,
+    borderWidth: 1,
+    borderColor: theme.colors.borderLight,
+  },
+  statusLabel: {
+    fontSize: theme.typography.fontSize.sm * rt.fontScale,
+    fontWeight: theme.typography.fontWeight.medium,
     color: theme.colors.textSecondary,
     marginBottom: 4,
+    fontFamily: theme.typography.fontFamily.medium,
+  },
+  statusValue: {
+    fontSize: theme.typography.fontSize.base * rt.fontScale,
+    fontWeight: theme.typography.fontWeight.semibold,
+    color: theme.colors.text,
+    fontFamily: theme.typography.fontFamily.semibold,
+  },
+  loadingText: {
+    fontSize: theme.typography.fontSize.base * rt.fontScale,
+    color: theme.colors.textSecondary,
     textAlign: 'center',
+    fontStyle: 'italic',
+    fontFamily: theme.typography.fontFamily.regular,
   },
 }));
 

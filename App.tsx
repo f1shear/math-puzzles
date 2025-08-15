@@ -6,12 +6,12 @@
  */
 
 import React, { useEffect } from 'react';
-import { StatusBar, useColorScheme, AppState } from 'react-native';
+import { StatusBar, useColorScheme, AppState, Platform, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import { UnistylesRuntime } from 'react-native-unistyles';
+import { UnistylesRuntime, useUnistyles } from 'react-native-unistyles';
 
 import './unistyles';
 import { store } from './src/store';
@@ -27,6 +27,7 @@ function AppContent() {
   const systemColorScheme = useColorScheme();
   const dispatch = useAppDispatch();
   const { theme } = useAppSelector((state) => state.app);
+  const { theme: currentTheme } = useUnistyles();
 
   useEffect(() => {
     // Load initial data from AsyncStorage
@@ -68,17 +69,66 @@ function AppContent() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar 
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={currentTheme.colors.background}
+        translucent={Platform.OS === 'android'}
+      />
       <NavigationContainer>
         <Tab.Navigator
-          screenOptions={{
-            tabBarActiveTintColor: UnistylesRuntime.themeName === 'dark' ? '#0A84FF' : '#007AFF',
-            tabBarInactiveTintColor: '#8E8E93',
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconSymbol: string;
+
+              if (route.name === 'Home') {
+                iconSymbol = focused ? '●' : '○';
+              } else if (route.name === 'Progress') {
+                iconSymbol = focused ? '▲' : '△';
+              } else if (route.name === 'Settings') {
+                iconSymbol = focused ? '■' : '□';
+              } else {
+                iconSymbol = '●';
+              }
+
+              return (
+                <Text 
+                  style={{ 
+                    color, 
+                    fontSize: size,
+                    fontWeight: focused ? '600' : '400',
+                  }}
+                >
+                  {iconSymbol}
+                </Text>
+              );
+            },
+            tabBarActiveTintColor: currentTheme.colors.tabBarActive,
+            tabBarInactiveTintColor: currentTheme.colors.tabBarInactive,
             tabBarStyle: {
-              backgroundColor: UnistylesRuntime.themeName === 'dark' ? '#1C1C1E' : '#F9F9F9',
+              backgroundColor: currentTheme.colors.tabBarBackground,
+              borderTopColor: currentTheme.colors.tabBarBorder,
+              borderTopWidth: 0.5,
+              paddingTop: 8,
+              paddingBottom: Platform.OS === 'ios' ? 20 : 8,
+              height: Platform.OS === 'ios' ? 88 : 68,
+              ...(Platform.OS === 'ios' && {
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: -1 },
+                shadowOpacity: 0.1,
+                shadowRadius: 4,
+              }),
+            },
+            tabBarLabelStyle: {
+              fontSize: currentTheme.typography.fontSize.xs,
+              fontWeight: currentTheme.typography.fontWeight.medium,
+              marginTop: 4,
             },
             headerShown: false,
-          }}>
+          })}>
           <Tab.Screen 
             name="Home" 
             component={HomeScreen}
