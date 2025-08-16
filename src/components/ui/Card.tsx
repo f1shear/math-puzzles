@@ -1,22 +1,20 @@
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface CardProps {
   children: React.ReactNode;
-  style?: ViewStyle;
   variant?: 'default' | 'elevated';
 }
 
 export const Card: React.FC<CardProps> = ({
   children,
-  style,
   variant = 'default'
 }) => {
   const styles = stylesheet(variant);
 
   return (
-    <View style={[styles.card, style]}>
+    <View style={styles.card}>
       {children}
     </View>
   );
@@ -29,7 +27,7 @@ const stylesheet = (variant: CardProps['variant']) =>
         ? theme.colors.surfaceElevated
         : theme.colors.surface,
       borderRadius: theme.borderRadius.xl,
-      padding: theme.spacing(3),
+      padding: theme.spacing(4),
       borderWidth: 1,
       borderColor: theme.colors.borderLight,
       shadowColor: theme.colors.text,

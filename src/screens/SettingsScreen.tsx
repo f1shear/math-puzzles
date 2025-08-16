@@ -30,7 +30,6 @@ const SettingsScreen = () => {
         <CollapsibleSection
           title={t('settings.theme.title')}
           defaultExpanded={true}
-          style={styles.section}
         >
           <ThemeSelector
             selectedTheme={currentThemeState}
@@ -41,7 +40,6 @@ const SettingsScreen = () => {
         <CollapsibleSection
           title={t('settings.language.title')}
           defaultExpanded={false}
-          style={styles.section}
         >
           <LanguageSelector />
         </CollapsibleSection>
@@ -49,7 +47,6 @@ const SettingsScreen = () => {
         <CollapsibleSection
           title={t('settings.data.title')}
           defaultExpanded={false}
-          style={styles.section}
         >
           <View style={styles.buttonContainer}>
             <DeleteButton
@@ -73,16 +70,13 @@ const stylesheet = () =>
       flex: 1,
     },
     content: {
-      padding: theme.spacing(2),
-      paddingBottom: theme.spacing(3),
-      gap: theme.spacing(1),
+      padding: theme.spacing(4),
+      gap: theme.spacing(2),
     },
-    section: {
-      // Additional section styling if needed
-    },
+
     buttonContainer: {
       alignItems: 'stretch',
-      paddingTop: theme.spacing(0.5),
+      paddingTop: theme.spacing(2),
     },
   }));
 

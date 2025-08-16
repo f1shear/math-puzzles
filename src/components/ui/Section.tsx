@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Title } from './typography/Title';
 import { Subtitle } from './typography/Subtitle';
@@ -8,7 +8,6 @@ interface SectionProps {
   title?: string;
   subtitle?: string;
   children?: React.ReactNode;
-  style?: ViewStyle;
   spacing?: 'small' | 'medium' | 'large';
 }
 
@@ -16,13 +15,12 @@ export const Section: React.FC<SectionProps> = ({
   title,
   subtitle,
   children,
-  style,
   spacing = 'medium',
 }) => {
   const styles = stylesheet(spacing);
 
   return (
-    <View style={[styles.section, style]}>
+    <View style={styles.section}>
       {title && (
         <View style={styles.header}>
           <Title>
@@ -31,7 +29,6 @@ export const Section: React.FC<SectionProps> = ({
           {subtitle && (
             <Subtitle
               color="secondary"
-              style={styles.subtitle}
             >
               {subtitle}
             </Subtitle>
@@ -59,10 +56,8 @@ const stylesheet = (spacing: SectionProps['spacing']) =>
         marginBottom: getSpacing(),
       },
       header: {
-        marginBottom: theme.spacing(3),
-      },
-      subtitle: {
-        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(4),
+        gap: theme.spacing(2),
       },
     };
   });

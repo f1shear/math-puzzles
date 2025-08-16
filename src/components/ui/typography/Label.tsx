@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, TextStyle } from 'react-native';
+import { Text } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface LabelProps {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'error';
-  style?: TextStyle;
   numberOfLines?: number;
   textAlign?: 'left' | 'center' | 'right';
 }
@@ -15,7 +14,6 @@ export const Label: React.FC<LabelProps> = ({
   children,
   weight = 'regular',
   color = 'tertiary',
-  style,
   numberOfLines,
   textAlign = 'left',
 }) => {
@@ -23,7 +21,7 @@ export const Label: React.FC<LabelProps> = ({
   
   return (
     <Text 
-      style={[styles.text, style]}
+      style={styles.text}
       numberOfLines={numberOfLines}
     >
       {children}

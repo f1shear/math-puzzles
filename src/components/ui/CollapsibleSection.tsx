@@ -10,7 +10,6 @@ interface CollapsibleSectionProps {
   subtitle?: string;
   children: React.ReactNode;
   defaultExpanded?: boolean;
-  style?: any;
 }
 
 export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
@@ -18,7 +17,6 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   subtitle,
   children,
   defaultExpanded = false,
-  style,
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [animation] = useState(new Animated.Value(defaultExpanded ? 1 : 0));
@@ -27,7 +25,7 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   const toggleExpanded = () => {
     const toValue = isExpanded ? 0 : 1;
     setIsExpanded(!isExpanded);
-    
+
     Animated.timing(animation, {
       toValue,
       duration: 200,
@@ -46,23 +44,23 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   });
 
   return (
-    <Card style={[styles.container, style]}>
-      <TouchableOpacity 
-        style={styles.header} 
+    <Card>
+      <TouchableOpacity
+        style={styles.header}
         onPress={toggleExpanded}
         activeOpacity={0.7}
       >
         <View style={styles.headerContent}>
-          <Title weight="semibold" style={styles.title}>
+          <Title weight="semibold">
             {title}
           </Title>
           {subtitle && (
-            <Caption color="secondary" style={styles.subtitle}>
+            <Caption color="secondary">
               {subtitle}
             </Caption>
           )}
         </View>
-        <Animated.Text 
+        <Animated.Text
           style={[
             styles.chevron,
             { transform: [{ rotate: rotateInterpolate }] }
@@ -71,8 +69,8 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           ▼
         </Animated.Text>
       </TouchableOpacity>
-      
-      <Animated.View 
+
+      <Animated.View
         style={[
           styles.content,
           {
@@ -92,31 +90,22 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    container: {
-      overflow: 'hidden',
-    },
     header: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingVertical: theme.spacing(1),
+      paddingVertical: theme.spacing(4),
     },
     headerContent: {
       flex: 1,
-    },
-    title: {
-      marginBottom: theme.spacing(0.25),
-    },
-    subtitle: {
-      fontSize: 12,
-      lineHeight: 16,
+      gap: theme.spacing(2),
     },
     chevron: {
       fontSize: 12,
-      color: theme.colors.text.secondary,
-      marginLeft: theme.spacing(2),
+      color: theme.colors.textSecondary,
+      marginLeft: theme.spacing(4),
     },
     content: {
-      paddingTop: theme.spacing(1),
+      paddingTop: theme.spacing(2),
     },
   }));

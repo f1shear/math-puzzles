@@ -64,7 +64,6 @@ const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
         </Body>
         <Caption
           color={isSelected ? 'accent' : 'secondary'}
-          style={styles.optionDescription}
         >
           {t(option.descriptionKey)}
         </Caption>
@@ -80,14 +79,14 @@ const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
     optionsContainer: {
-      gap: theme.spacing(1),
+      gap: theme.spacing(2),
     },
     option: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
       backgroundColor: theme.colors.surfaceElevated,
-      padding: theme.spacing(3),
+      padding: theme.spacing(4),
       borderRadius: theme.borderRadius.lg,
       borderWidth: 1,
       borderColor: theme.colors.borderLight,
@@ -98,9 +97,7 @@ const stylesheet = () =>
     },
     optionContent: {
       flex: 1,
-    },
-    optionDescription: {
-      marginTop: 4,
+      gap: theme.spacing(2),
     },
     radio: {
       width: 20,

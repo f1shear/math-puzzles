@@ -16,14 +16,12 @@ const HomeScreen = () => {
         <View style={styles.header}>
           <DisplayText
             textAlign="center"
-            style={styles.title}
           >
             {t('home.title')}
           </DisplayText>
           <Subtitle
             color="secondary"
             textAlign="center"
-            style={styles.subtitle}
           >
             {t('home.subtitle')}
           </Subtitle>
@@ -44,24 +42,20 @@ const stylesheet = () =>
     },
     container: {
       flex: 1,
-      padding: theme.spacing(2),
+      padding: theme.spacing(4),
     },
     header: {
-      paddingTop: theme.spacing(4),
-      paddingHorizontal: theme.spacing(3),
+      paddingTop: theme.spacing(6),
+      paddingHorizontal: theme.spacing(4),
       alignItems: 'center',
+      gap: theme.spacing(2),
     },
     content: {
       flex: 1,
-      paddingHorizontal: theme.spacing(2),
-      paddingTop: theme.spacing(3),
+      paddingHorizontal: theme.spacing(4),
+      paddingTop: theme.spacing(6),
     },
-    title: {
-      marginBottom: theme.spacing(1),
-    },
-    subtitle: {
-      marginBottom: theme.spacing(2),
-    },
+
   }));
 
 export default HomeScreen;

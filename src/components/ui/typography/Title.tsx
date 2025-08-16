@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, TextStyle } from 'react-native';
+import { Text } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface TitleProps {
   children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'error';
-  style?: TextStyle;
   numberOfLines?: number;
   textAlign?: 'left' | 'center' | 'right';
 }
@@ -15,7 +14,6 @@ export const Title: React.FC<TitleProps> = ({
   children,
   weight = 'semibold',
   color = 'primary',
-  style,
   numberOfLines,
   textAlign = 'left',
 }) => {
@@ -23,7 +21,7 @@ export const Title: React.FC<TitleProps> = ({
   
   return (
     <Text 
-      style={[styles.text, style]}
+      style={styles.text}
       numberOfLines={numberOfLines}
     >
       {children}

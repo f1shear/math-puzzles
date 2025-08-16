@@ -2,7 +2,6 @@ import React from 'react';
 import { 
   TouchableOpacity, 
   TouchableOpacityProps, 
-  ViewStyle,
   ActivityIndicator 
 } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
@@ -16,7 +15,6 @@ interface SecondaryButtonProps extends Omit<TouchableOpacityProps, 'style'> {
   size?: ButtonSize;
   loading?: boolean;
   disabled?: boolean;
-  style?: ViewStyle;
 }
 
 export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
@@ -24,7 +22,6 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   size = 'medium',
   loading = false,
   disabled = false,
-  style,
   ...touchableProps
 }) => {
   const styles = stylesheet(size);
@@ -36,8 +33,7 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
     <TouchableOpacity
       style={[
         styles.button,
-        isDisabled && styles.buttonDisabled,
-        style
+        isDisabled && styles.buttonDisabled
       ]}
       disabled={isDisabled}
       activeOpacity={0.7}
