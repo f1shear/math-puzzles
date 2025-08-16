@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Card } from '../ui';
-import { Title } from '../ui/typography/Title';
+// Removed Card and Title imports - no longer needed
 import { Body } from '../ui/typography/Body';
 import { Caption } from '../ui/typography/Caption';
 import { useTranslation } from '../../hooks/useTranslation';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '../../i18n/types';
 
 export const LanguageSelector: React.FC = () => {
-  const { t, currentLanguage, changeLanguage } = useTranslation();
+  const { currentLanguage, changeLanguage } = useTranslation();
   const styles = stylesheet();
 
   const handleLanguageChange = (language: SupportedLanguage) => {
@@ -17,21 +16,16 @@ export const LanguageSelector: React.FC = () => {
   };
 
   return (
-    <Card>
-      <Title style={styles.title}>
-        {t('settings.language.title')}
-      </Title>
-      <View style={styles.optionsContainer}>
-        {LANGUAGE_OPTIONS.map((languageOption) => (
-          <LanguageOption
-            key={languageOption.code}
-            option={languageOption}
-            isSelected={currentLanguage === languageOption.code}
-            onPress={() => handleLanguageChange(languageOption.code)}
-          />
-        ))}
-      </View>
-    </Card>
+    <View style={styles.optionsContainer}>
+      {LANGUAGE_OPTIONS.map((languageOption) => (
+        <LanguageOption
+          key={languageOption.code}
+          option={languageOption}
+          isSelected={currentLanguage === languageOption.code}
+          onPress={() => handleLanguageChange(languageOption.code)}
+        />
+      ))}
+    </View>
   );
 };
 
@@ -81,9 +75,6 @@ const LanguageOption: React.FC<LanguageOptionProps> = ({
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    title: {
-      marginBottom: theme.spacing(3),
-    },
     optionsContainer: {
       gap: theme.spacing(1),
     },

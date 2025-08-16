@@ -1,6 +1,7 @@
 // Layout components
 export { Card } from './Card';
 export { Section } from './Section';
+export { CollapsibleSection } from './CollapsibleSection';
 
 // Typography components
 export { DisplayText } from './typography/DisplayText';

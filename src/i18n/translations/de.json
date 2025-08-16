@@ -41,6 +41,7 @@
     "subtitle": "Konfiguriere deine Einstellungen",
     "theme": {
       "title": "Design",
+      "subtitle": "Wähle dein bevorzugtes Design",
       "auto": "Automatisch (System)",
       "autoDescription": "Systemdesign folgen",
       "light": "Hell",
@@ -49,10 +50,12 @@
       "darkDescription": "Immer dunkles Design verwenden"
     },
     "language": {
-      "title": "Sprache"
+      "title": "Sprache",
+      "subtitle": "Wähle deine bevorzugte Sprache"
     },
     "data": {
       "title": "App-Daten",
+      "subtitle": "App-Daten und Einstellungen zurücksetzen",
       "resetButton": "Alle Daten Zurücksetzen"
     }
   },

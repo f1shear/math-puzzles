@@ -11,7 +11,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <View style={styles.header}>
         <DisplayText
           textAlign="center"
           style={styles.title}
@@ -26,6 +26,9 @@ const HomeScreen = () => {
           {t('home.subtitle')}
         </Subtitle>
       </View>
+      <View style={styles.content}>
+        {/* TODO: Add puzzle content here */}
+      </View>
     </View>
   );
 };
@@ -37,17 +40,21 @@ const stylesheet = () =>
       backgroundColor: theme.colors.background,
       padding: theme.spacing(2),
     },
+    header: {
+      paddingTop: theme.spacing(4),
+      paddingHorizontal: theme.spacing(3),
+      alignItems: 'center',
+    },
     content: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingHorizontal: theme.spacing(3),
+      paddingHorizontal: theme.spacing(2),
+      paddingTop: theme.spacing(3),
     },
     title: {
       marginBottom: theme.spacing(1),
     },
     subtitle: {
-      marginBottom: theme.spacing(6),
+      marginBottom: theme.spacing(2),
     },
   }));
 

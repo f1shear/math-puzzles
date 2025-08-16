@@ -41,6 +41,7 @@
     "subtitle": "Configura tus preferencias",
     "theme": {
       "title": "Tema",
+      "subtitle": "Elige tu tema preferido",
       "auto": "Automático (Sistema)",
       "autoDescription": "Seguir tema del sistema",
       "light": "Claro",
@@ -49,10 +50,12 @@
       "darkDescription": "Usar siempre tema oscuro"
     },
     "language": {
-      "title": "Idioma"
+      "title": "Idioma",
+      "subtitle": "Elige tu idioma preferido"
     },
     "data": {
       "title": "Datos de la App",
+      "subtitle": "Restablecer datos y preferencias de la app",
       "resetButton": "Restablecer Todos los Datos"
     }
   },

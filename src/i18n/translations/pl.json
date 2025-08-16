@@ -41,6 +41,7 @@
     "subtitle": "Skonfiguruj swoje preferencje",
     "theme": {
       "title": "Motyw",
+      "subtitle": "Wybierz preferowany motyw",
       "auto": "Automatyczny (System)",
       "autoDescription": "Podążaj za motywem systemu",
       "light": "Jasny",
@@ -49,10 +50,12 @@
       "darkDescription": "Zawsze używaj ciemnego motywu"
     },
     "language": {
-      "title": "Język"
+      "title": "Język",
+      "subtitle": "Wybierz preferowany język"
     },
     "data": {
       "title": "Dane Aplikacji",
+      "subtitle": "Resetuj dane i preferencje aplikacji",
       "resetButton": "Resetuj Wszystkie Dane"
     }
   },

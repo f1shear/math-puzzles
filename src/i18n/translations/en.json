@@ -41,6 +41,7 @@
     "subtitle": "Configure your preferences",
     "theme": {
       "title": "Theme",
+      "subtitle": "Choose your preferred theme",
       "auto": "Auto (System)",
       "autoDescription": "Follow system theme",
       "light": "Light",
@@ -49,10 +50,12 @@
       "darkDescription": "Always use dark theme"
     },
     "language": {
-      "title": "Language"
+      "title": "Language",
+      "subtitle": "Choose your preferred language"
     },
     "data": {
       "title": "App Data",
+      "subtitle": "Reset app data and preferences",
       "resetButton": "Reset All Data"
     }
   },

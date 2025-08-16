@@ -3,9 +3,7 @@ import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { changeTheme, resetAppData } from '../store/slices/appSlice';
-import { Section } from '../components/ui/Section';
-import { Card } from '../components/ui/Card';
-import { Title } from '../components/ui/typography/Title';
+import { CollapsibleSection } from '../components/ui/CollapsibleSection';
 import { DeleteButton } from '../components/ui/buttons/DeleteButton';
 import { ThemeSelector } from '../components/settings/ThemeSelector';
 import { LanguageSelector } from '../components/settings/LanguageSelector';
@@ -27,34 +25,37 @@ const SettingsScreen = () => {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Section
-        title={t('settings.title')}
-        subtitle={t('settings.subtitle')}
-        spacing="large"
+      <CollapsibleSection
+        title={t('settings.theme.title')}
+        defaultExpanded={true}
+        style={styles.section}
       >
         <ThemeSelector
           selectedTheme={currentThemeState}
           onThemeChange={handleThemeChange}
         />
-      </Section>
+      </CollapsibleSection>
 
-      <Section spacing="medium">
+      <CollapsibleSection
+        title={t('settings.language.title')}
+        defaultExpanded={false}
+        style={styles.section}
+      >
         <LanguageSelector />
-      </Section>
+      </CollapsibleSection>
 
-      <Section spacing="medium">
-        <Card>
-          <Title style={styles.dataTitle}>
-            {t('settings.data.title')}
-          </Title>
-          <View style={styles.buttonContainer}>
-            <DeleteButton
-              title={t('settings.data.resetButton')}
-              onPress={handleResetApp}
-            />
-          </View>
-        </Card>
-      </Section>
+      <CollapsibleSection
+        title={t('settings.data.title')}
+        defaultExpanded={false}
+        style={styles.section}
+      >
+        <View style={styles.buttonContainer}>
+          <DeleteButton
+            title={t('settings.data.resetButton')}
+            onPress={handleResetApp}
+          />
+        </View>
+      </CollapsibleSection>
     </ScrollView>
   );
 };
@@ -67,13 +68,15 @@ const stylesheet = () =>
     },
     content: {
       padding: theme.spacing(2),
-      paddingBottom: theme.spacing(4),
+      paddingBottom: theme.spacing(3),
+      gap: theme.spacing(1),
     },
-    dataTitle: {
-      marginBottom: theme.spacing(3),
+    section: {
+      // Additional section styling if needed
     },
     buttonContainer: {
       alignItems: 'stretch',
+      paddingTop: theme.spacing(0.5),
     },
   }));
 

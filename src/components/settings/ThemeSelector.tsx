@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Card } from '../ui';
-import { Title } from '../ui/typography/Title';
+// Removed Card and Title imports - no longer needed
 import { Body } from '../ui/typography/Body';
 import { Caption } from '../ui/typography/Caption';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -17,25 +16,19 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
   selectedTheme,
   onThemeChange,
 }) => {
-  const { t } = useTranslation();
   const styles = stylesheet();
 
   return (
-    <Card>
-      <Title style={styles.title}>
-        {t('settings.theme.title')}
-      </Title>
-      <View style={styles.optionsContainer}>
-        {APP_CONSTANTS.THEME_OPTIONS.map((themeOption) => (
-          <ThemeOptionSelector
-            key={themeOption.key}
-            option={themeOption}
-            isSelected={selectedTheme === themeOption.key}
-            onPress={() => onThemeChange(themeOption.key)}
-          />
-        ))}
-      </View>
-    </Card>
+    <View style={styles.optionsContainer}>
+      {APP_CONSTANTS.THEME_OPTIONS.map((themeOption) => (
+        <ThemeOptionSelector
+          key={themeOption.key}
+          option={themeOption}
+          isSelected={selectedTheme === themeOption.key}
+          onPress={() => onThemeChange(themeOption.key)}
+        />
+      ))}
+    </View>
   );
 };
 
@@ -86,9 +79,6 @@ const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    title: {
-      marginBottom: theme.spacing(3),
-    },
     optionsContainer: {
       gap: theme.spacing(1),
     },

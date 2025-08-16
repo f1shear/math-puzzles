@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Section } from '../components/ui/Section';
 import { Card } from '../components/ui/Card';
@@ -37,29 +37,30 @@ const ProgressScreen = () => {
       <Section
         title={t('progress.title')}
         subtitle={t('progress.subtitle')}
-        spacing="large"
-        style={styles.metricsSection}
+        spacing="medium"
       >
-        {metrics.map((metric, index) => (
-          <Card key={index} style={styles.metricCard}>
-            <Caption weight="medium" color="secondary">
-              {metric.title}
-            </Caption>
-            <Title 
-              weight="bold" 
-              color="accent"
-              style={styles.metricValue}
-            >
-              {metric.value}
-            </Title>
-            <Label color="tertiary">
-              {metric.subtitle}
-            </Label>
-          </Card>
-        ))}
+        <Card style={styles.metricsContainer}>
+          {metrics.map((metric, index) => (
+            <View key={index} style={styles.metricItem}>
+              <Caption weight="medium" color="secondary" style={styles.metricLabel}>
+                {metric.title}
+              </Caption>
+              <Title 
+                weight="bold" 
+                color="accent"
+                style={styles.metricValue}
+              >
+                {metric.value}
+              </Title>
+              <Label color="tertiary" style={styles.metricSubtitle}>
+                {metric.subtitle}
+              </Label>
+            </View>
+          ))}
+        </Card>
       </Section>
 
-      <Section title={t('progress.achievements.title')}>
+      <Section title={t('progress.achievements.title')} spacing="small">
         <Card style={styles.emptyState}>
           <Text style={styles.emoji}>
             {APP_CONSTANTS.ACHIEVEMENTS_EMOJI}
@@ -91,24 +92,39 @@ const stylesheet = () =>
     },
     content: {
       padding: theme.spacing(2),
-      paddingBottom: theme.spacing(4),
+      paddingBottom: theme.spacing(3),
     },
-    metricsSection: {
-      gap: theme.spacing(2),
+    metricsContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingVertical: theme.spacing(2),
     },
-    metricCard: {
-      alignItems: 'flex-start',
+    metricItem: {
+      flex: 1,
+      alignItems: 'center',
+      paddingHorizontal: theme.spacing(1),
+    },
+    metricLabel: {
+      fontSize: 12,
+      textAlign: 'center',
+      marginBottom: theme.spacing(0.5),
     },
     metricValue: {
-      marginVertical: theme.spacing(1),
+      marginVertical: theme.spacing(0.5),
+      textAlign: 'center',
+    },
+    metricSubtitle: {
+      fontSize: 11,
+      textAlign: 'center',
+      lineHeight: 14,
     },
     emptyState: {
       alignItems: 'center',
-      padding: theme.spacing(4),
+      padding: theme.spacing(3),
     },
     emoji: {
-      fontSize: 48,
-      marginBottom: theme.spacing(2),
+      fontSize: 32,
+      marginBottom: theme.spacing(1.5),
     },
     emptyTitle: {
       marginBottom: theme.spacing(1),
