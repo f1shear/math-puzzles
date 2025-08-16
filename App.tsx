@@ -6,17 +6,19 @@
  */
 
 import React, { useEffect } from 'react';
-import { StatusBar, useColorScheme, AppState, Platform, Text } from 'react-native';
+import { StatusBar, AppState, Platform, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import { UnistylesRuntime, useUnistyles } from 'react-native-unistyles';
+import { useUnistyles } from 'react-native-unistyles';
 
 import './unistyles';
 import { store } from './src/store';
-import { useAppDispatch, useAppSelector } from './src/store/hooks';
+import { useAppDispatch } from './src/store/hooks';
 import { loadAppData, saveLastActive } from './src/store/slices/appSlice';
+import { useAppTheme } from './src/hooks/useAppTheme';
+import { APP_CONSTANTS } from './src/constants/app';
 import HomeScreen from './src/screens/HomeScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
@@ -24,10 +26,8 @@ import SettingsScreen from './src/screens/SettingsScreen';
 const Tab = createBottomTabNavigator();
 
 function AppContent() {
-  const systemColorScheme = useColorScheme();
   const dispatch = useAppDispatch();
-  const { theme } = useAppSelector((state) => state.app);
-  const { theme: currentTheme } = useUnistyles();
+  const { theme: currentTheme, isDarkMode } = useAppTheme();
 
   useEffect(() => {
     // Load initial data from AsyncStorage
@@ -52,21 +52,6 @@ function AppContent() {
     };
   }, [dispatch]);
 
-  // Handle theme changes
-  useEffect(() => {
-    if (theme === 'auto') {
-      UnistylesRuntime.setAdaptiveThemes(true);
-    } else {
-      UnistylesRuntime.setAdaptiveThemes(false);
-      UnistylesRuntime.setTheme(theme);
-    }
-  }, [theme]);
-
-  // Determine current theme for status bar
-  const isDarkMode = theme === 'auto' 
-    ? systemColorScheme === 'dark'
-    : theme === 'dark';
-
   return (
     <SafeAreaProvider>
       <StatusBar 
@@ -78,17 +63,21 @@ function AppContent() {
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
-              let iconSymbol: string;
+              const getTabIcon = (routeName: string) => {
+                switch (routeName) {
+                  case 'Home':
+                    return APP_CONSTANTS.TAB_ICONS.HOME;
+                  case 'Progress':
+                    return APP_CONSTANTS.TAB_ICONS.PROGRESS;
+                  case 'Settings':
+                    return APP_CONSTANTS.TAB_ICONS.SETTINGS;
+                  default:
+                    return APP_CONSTANTS.TAB_ICONS.HOME;
+                }
+              };
 
-              if (route.name === 'Home') {
-                iconSymbol = focused ? '●' : '○';
-              } else if (route.name === 'Progress') {
-                iconSymbol = focused ? '▲' : '△';
-              } else if (route.name === 'Settings') {
-                iconSymbol = focused ? '■' : '□';
-              } else {
-                iconSymbol = '●';
-              }
+              const iconConfig = getTabIcon(route.name);
+              const iconSymbol = focused ? iconConfig.focused : iconConfig.unfocused;
 
               return (
                 <Text 

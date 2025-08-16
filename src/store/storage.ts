@@ -9,7 +9,7 @@ export const StorageUtils = {
       console.error('Error setting string:', error);
     }
   },
-  
+
   getString: async (key: string): Promise<string | null> => {
     try {
       return await AsyncStorage.getItem(key);
@@ -18,7 +18,7 @@ export const StorageUtils = {
       return null;
     }
   },
-  
+
   setNumber: async (key: string, value: number): Promise<void> => {
     try {
       await AsyncStorage.setItem(key, value.toString());
@@ -26,7 +26,7 @@ export const StorageUtils = {
       console.error('Error setting number:', error);
     }
   },
-  
+
   getNumber: async (key: string): Promise<number | null> => {
     try {
       const value = await AsyncStorage.getItem(key);
@@ -36,7 +36,7 @@ export const StorageUtils = {
       return null;
     }
   },
-  
+
   setBoolean: async (key: string, value: boolean): Promise<void> => {
     try {
       await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -44,7 +44,7 @@ export const StorageUtils = {
       console.error('Error setting boolean:', error);
     }
   },
-  
+
   getBoolean: async (key: string): Promise<boolean | null> => {
     try {
       const value = await AsyncStorage.getItem(key);
@@ -54,7 +54,7 @@ export const StorageUtils = {
       return null;
     }
   },
-  
+
   remove: async (key: string): Promise<void> => {
     try {
       await AsyncStorage.removeItem(key);
@@ -62,7 +62,7 @@ export const StorageUtils = {
       console.error('Error removing item:', error);
     }
   },
-  
+
   clear: async (): Promise<void> => {
     try {
       await AsyncStorage.clear();
