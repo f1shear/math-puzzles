@@ -1,14 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { useAppSelector } from '../store/hooks';
 import { DisplayText } from '../components/ui/typography/DisplayText';
 import { Subtitle } from '../components/ui/typography/Subtitle';
-import { StatusCard } from '../components/home/StatusCard';
 import { useTranslation } from '../hooks/useTranslation';
 
 const HomeScreen = () => {
-  const { lastActive, isFirstLaunch, isLoaded } = useAppSelector((state) => state.app);
   const { t } = useTranslation();
   const styles = stylesheet();
 
@@ -28,12 +25,6 @@ const HomeScreen = () => {
         >
           {t('home.subtitle')}
         </Subtitle>
-
-        <StatusCard
-          isFirstLaunch={isFirstLaunch}
-          lastActive={lastActive}
-          isLoaded={isLoaded}
-        />
       </View>
     </View>
   );
