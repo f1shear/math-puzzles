@@ -1,7 +1,10 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Card, Typography } from '../ui';
+import { Card } from '../ui';
+import { Title } from '../ui/typography/Title';
+import { Body } from '../ui/typography/Body';
+import { Caption } from '../ui/typography/Caption';
 import { useTranslation } from '../../hooks/useTranslation';
 import { LANGUAGE_OPTIONS, type SupportedLanguage } from '../../i18n/types';
 
@@ -15,9 +18,9 @@ export const LanguageSelector: React.FC = () => {
 
   return (
     <Card>
-      <Typography variant="title" weight="semibold" style={styles.title}>
+      <Title style={styles.title}>
         {t('settings.language.title')}
-      </Typography>
+      </Title>
       <View style={styles.optionsContainer}>
         {LANGUAGE_OPTIONS.map((languageOption) => (
           <LanguageOption
@@ -55,20 +58,18 @@ const LanguageOption: React.FC<LanguageOptionProps> = ({
       activeOpacity={0.7}
     >
       <View style={styles.optionContent}>
-        <Typography
-          variant="body"
+        <Body
           weight="semibold"
           color={isSelected ? 'accent' : 'primary'}
         >
           {option.name}
-        </Typography>
-        <Typography
-          variant="caption"
+        </Body>
+        <Caption
           color={isSelected ? 'accent' : 'secondary'}
           style={styles.optionDescription}
         >
           {option.nativeName}
-        </Typography>
+        </Caption>
       </View>
       <View style={[
         styles.radio,

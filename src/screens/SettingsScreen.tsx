@@ -1,10 +1,14 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { changeTheme, resetAppData } from '../store/slices/appSlice';
-import { Section } from '../components/ui';
-import { ThemeSelector, LanguageSelector, DataManagement } from '../components/settings';
+import { Section } from '../components/ui/Section';
+import { Card } from '../components/ui/Card';
+import { Title } from '../components/ui/typography/Title';
+import { DeleteButton } from '../components/ui/buttons/DeleteButton';
+import { ThemeSelector } from '../components/settings/ThemeSelector';
+import { LanguageSelector } from '../components/settings/LanguageSelector';
 import { useTranslation } from '../hooks/useTranslation';
 
 const SettingsScreen = () => {
@@ -39,7 +43,17 @@ const SettingsScreen = () => {
       </Section>
 
       <Section spacing="medium">
-        <DataManagement onResetData={handleResetApp} />
+        <Card>
+          <Title style={styles.dataTitle}>
+            {t('settings.data.title')}
+          </Title>
+          <View style={styles.buttonContainer}>
+            <DeleteButton
+              title={t('settings.data.resetButton')}
+              onPress={handleResetApp}
+            />
+          </View>
+        </Card>
       </Section>
     </ScrollView>
   );
@@ -54,6 +68,12 @@ const stylesheet = () =>
     content: {
       padding: theme.spacing(2),
       paddingBottom: theme.spacing(4),
+    },
+    dataTitle: {
+      marginBottom: theme.spacing(3),
+    },
+    buttonContainer: {
+      alignItems: 'stretch',
     },
   }));
 

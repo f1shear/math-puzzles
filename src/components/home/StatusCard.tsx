@@ -1,7 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Card, Typography } from '../ui';
+import { Card } from '../ui';
+import { Title } from '../ui/typography/Title';
+import { Caption } from '../ui/typography/Caption';
+import { Body } from '../ui/typography/Body';
 import { formatDate, formatWelcomeMessage } from '../../utils/formatters';
 import { useTranslation } from '../../hooks/useTranslation';
 
@@ -22,17 +25,16 @@ export const StatusCard: React.FC<StatusCardProps> = ({
   return (
     <Card variant="elevated" style={styles.card}>
       <View style={styles.header}>
-        <Typography variant="title" weight="semibold" textAlign="center">
+        <Title textAlign="center">
           {t('home.status.title')}
-        </Typography>
-        <Typography
-          variant="caption"
+        </Title>
+        <Caption
           color="tertiary"
           textAlign="center"
           style={styles.subtitle}
         >
           {t('home.status.subtitle')}
-        </Typography>
+        </Caption>
       </View>
       {isLoaded ? (
         <View style={styles.content}>
@@ -46,14 +48,13 @@ export const StatusCard: React.FC<StatusCardProps> = ({
           />
         </View>
       ) : (
-        <Typography
-          variant="body"
+        <Body
           color="secondary"
           textAlign="center"
           style={styles.loading}
         >
           {t('home.loading')}
-        </Typography>
+        </Body>
       )}
     </Card>
   );
@@ -69,12 +70,12 @@ const StatusRow: React.FC<StatusRowProps> = ({ label, value }) => {
 
   return (
     <View style={styles.row}>
-      <Typography variant="caption" weight="medium" color="secondary">
+      <Caption weight="medium" color="secondary">
         {label}
-      </Typography>
-      <Typography variant="body" weight="semibold">
+      </Caption>
+      <Body weight="semibold">
         {value}
-      </Typography>
+      </Body>
     </View>
   );
 };

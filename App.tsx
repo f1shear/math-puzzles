@@ -11,7 +11,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import { useUnistyles } from 'react-native-unistyles';
 
 import './unistyles';
 import './src/i18n/config';

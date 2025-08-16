@@ -1,7 +1,10 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Card, Typography } from '../ui';
+import { Card } from '../ui';
+import { Title } from '../ui/typography/Title';
+import { Body } from '../ui/typography/Body';
+import { Caption } from '../ui/typography/Caption';
 import { useTranslation } from '../../hooks/useTranslation';
 import { APP_CONSTANTS, ThemeOption } from '../../constants/app';
 
@@ -19,9 +22,9 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
 
   return (
     <Card>
-      <Typography variant="title" weight="semibold" style={styles.title}>
+      <Title style={styles.title}>
         {t('settings.theme.title')}
-      </Typography>
+      </Title>
       <View style={styles.optionsContainer}>
         {APP_CONSTANTS.THEME_OPTIONS.map((themeOption) => (
           <ThemeOptionSelector
@@ -60,20 +63,18 @@ const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
       activeOpacity={0.7}
     >
       <View style={styles.optionContent}>
-        <Typography
-          variant="body"
+        <Body
           weight="semibold"
           color={isSelected ? 'accent' : 'primary'}
         >
           {t(option.labelKey)}
-        </Typography>
-        <Typography
-          variant="caption"
+        </Body>
+        <Caption
           color={isSelected ? 'accent' : 'secondary'}
           style={styles.optionDescription}
         >
           {t(option.descriptionKey)}
-        </Typography>
+        </Caption>
       </View>
       <View style={[
         styles.radio,

@@ -2,8 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { useAppSelector } from '../store/hooks';
-import { Typography } from '../components/ui';
-import { StatusCard } from '../components/home';
+import { DisplayText } from '../components/ui/typography/DisplayText';
+import { Subtitle } from '../components/ui/typography/Subtitle';
+import { StatusCard } from '../components/home/StatusCard';
 import { useTranslation } from '../hooks/useTranslation';
 
 const HomeScreen = () => {
@@ -14,22 +15,19 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Typography
-          variant="display"
-          weight="bold"
+        <DisplayText
           textAlign="center"
           style={styles.title}
         >
           {t('home.title')}
-        </Typography>
-        <Typography
-          variant="subtitle"
+        </DisplayText>
+        <Subtitle
           color="secondary"
           textAlign="center"
           style={styles.subtitle}
         >
           {t('home.subtitle')}
-        </Typography>
+        </Subtitle>
 
         <StatusCard
           isFirstLaunch={isFirstLaunch}

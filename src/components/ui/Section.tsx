@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Typography } from './Typography';
+import { Title } from './typography/Title';
+import { Subtitle } from './typography/Subtitle';
 
 interface SectionProps {
   title?: string;
@@ -24,17 +25,16 @@ export const Section: React.FC<SectionProps> = ({
     <View style={[styles.section, style]}>
       {title && (
         <View style={styles.header}>
-          <Typography variant="title" weight="semibold">
+          <Title>
             {title}
-          </Typography>
+          </Title>
           {subtitle && (
-            <Typography
-              variant="subtitle"
+            <Subtitle
               color="secondary"
               style={styles.subtitle}
             >
               {subtitle}
-            </Typography>
+            </Subtitle>
           )}
         </View>
       )}
