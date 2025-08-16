@@ -27,7 +27,8 @@ const stylesheet = (variant: CardProps['variant']) =>
         ? theme.colors.surfaceElevated
         : theme.colors.surface,
       borderRadius: theme.borderRadius.xl,
-      padding: theme.spacing(4),
+      padding: theme.spacing(2),
+      justifyContent: 'center',
       borderWidth: 1,
       borderColor: theme.colors.borderLight,
       shadowColor: theme.colors.text,

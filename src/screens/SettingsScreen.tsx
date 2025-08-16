@@ -70,10 +70,9 @@ const stylesheet = () =>
       flex: 1,
     },
     content: {
-      padding: theme.spacing(4),
+      padding: theme.spacing(2),
       gap: theme.spacing(2),
     },
-
     buttonContainer: {
       alignItems: 'stretch',
       paddingTop: theme.spacing(2),

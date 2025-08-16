@@ -94,16 +94,14 @@ const stylesheet = () =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingVertical: theme.spacing(4),
+      paddingVertical: theme.spacing(2),
     },
     headerContent: {
       flex: 1,
-      gap: theme.spacing(2),
     },
     chevron: {
       fontSize: 12,
       color: theme.colors.textSecondary,
-      marginLeft: theme.spacing(4),
     },
     content: {
       paddingTop: theme.spacing(2),

@@ -82,7 +82,7 @@ const stylesheet = () =>
       alignItems: 'center',
       justifyContent: 'space-between',
       backgroundColor: theme.colors.surfaceElevated,
-      padding: theme.spacing(4),
+      padding: theme.spacing(2),
       borderRadius: theme.borderRadius.lg,
       borderWidth: 1,
       borderColor: theme.colors.borderLight,
