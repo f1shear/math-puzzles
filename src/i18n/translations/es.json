@@ -1,0 +1,87 @@
+{
+  "app": {
+    "name": "Rompecabezas Matemáticos"
+  },
+  "home": {
+    "title": "Rompecabezas Matemáticos",
+    "subtitle": "Desafía tu mente con hermosos rompecabezas",
+    "status": {
+      "title": "Estado de la App",
+      "subtitle": "Tu viaje hasta ahora"
+    },
+    "loading": "Cargando tus datos...",
+    "labels": {
+      "firstLaunch": "Primer Inicio",
+      "lastActive": "Última Actividad"
+    },
+    "welcome": {
+      "new": "¡Bienvenido! 👋",
+      "returning": "Usuario Recurrente ⭐"
+    }
+  },
+  "progress": {
+    "title": "Progreso",
+    "subtitle": "Sigue tu viaje matemático",
+    "metrics": {
+      "puzzlesSolved": "Rompecabezas Resueltos",
+      "puzzlesSolvedSubtitle": "¡Comienza con tu primer rompecabezas!",
+      "streak": "Racha",
+      "streakSubtitle": "Resuelve diariamente para mantener el impulso",
+      "level": "Nivel",
+      "levelSubtitle": "Apenas comenzando"
+    },
+    "achievements": {
+      "title": "Logros",
+      "empty": "Aún no hay logros",
+      "emptySubtitle": "Comienza a resolver rompecabezas para desbloquear logros"
+    }
+  },
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Configura tus preferencias",
+    "theme": {
+      "title": "Tema",
+      "auto": "Automático (Sistema)",
+      "autoDescription": "Seguir tema del sistema",
+      "light": "Claro",
+      "lightDescription": "Usar siempre tema claro",
+      "dark": "Oscuro",
+      "darkDescription": "Usar siempre tema oscuro"
+    },
+    "language": {
+      "title": "Idioma"
+    },
+    "data": {
+      "title": "Datos de la App",
+      "resetButton": "Restablecer Todos los Datos"
+    }
+  },
+  "tabs": {
+    "home": "Inicio",
+    "progress": "Progreso",
+    "settings": "Configuración"
+  },
+  "levels": {
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "expert": "Experto"
+  },
+  "time": {
+    "justNow": "Ahora mismo",
+    "minutesAgo": "hace {{count}}m",
+    "hoursAgo": "hace {{count}}h",
+    "daysAgo": "hace {{count}}d",
+    "never": "Nunca",
+    "unknown": "Desconocido",
+    "invalid": "Fecha inválida"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "reset": "Restablecer"
+  }
+}

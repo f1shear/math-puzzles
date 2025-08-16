@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Card, Typography } from '../ui';
 import { formatDate, formatWelcomeMessage } from '../../utils/formatters';
-import { APP_CONSTANTS } from '../../constants/app';
+import { useTranslation } from '../../hooks/useTranslation';
 
 interface StatusCardProps {
   isFirstLaunch: boolean;
@@ -16,13 +16,14 @@ export const StatusCard: React.FC<StatusCardProps> = ({
   lastActive,
   isLoaded,
 }) => {
+  const { t } = useTranslation();
   const styles = stylesheet();
 
   return (
     <Card variant="elevated" style={styles.card}>
       <View style={styles.header}>
         <Typography variant="title" weight="semibold" textAlign="center">
-          {APP_CONSTANTS.CONTENT.HOME.STATUS_TITLE}
+          {t('home.status.title')}
         </Typography>
         <Typography
           variant="caption"
@@ -30,28 +31,28 @@ export const StatusCard: React.FC<StatusCardProps> = ({
           textAlign="center"
           style={styles.subtitle}
         >
-          {APP_CONSTANTS.CONTENT.HOME.STATUS_SUBTITLE}
+          {t('home.status.subtitle')}
         </Typography>
       </View>
       {isLoaded ? (
         <View style={styles.content}>
           <StatusRow
-            label="First Launch"
-            value={formatWelcomeMessage(isFirstLaunch)}
+            label={t('home.labels.firstLaunch')}
+            value={formatWelcomeMessage(isFirstLaunch, t)}
           />
           <StatusRow
-            label="Last Active"
-            value={formatDate(lastActive)}
+            label={t('home.labels.lastActive')}
+            value={formatDate(lastActive, t)}
           />
         </View>
       ) : (
-        <Typography 
-          variant="body" 
-          color="secondary" 
+        <Typography
+          variant="body"
+          color="secondary"
           textAlign="center"
           style={styles.loading}
         >
-          {APP_CONSTANTS.CONTENT.HOME.LOADING_TEXT}
+          {t('home.loading')}
         </Typography>
       )}
     </Card>

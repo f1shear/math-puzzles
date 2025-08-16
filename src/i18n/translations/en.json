@@ -1,0 +1,87 @@
+{
+  "app": {
+    "name": "Math Puzzles"
+  },
+  "home": {
+    "title": "Math Puzzles",
+    "subtitle": "Challenge your mind with beautiful puzzles",
+    "status": {
+      "title": "App Status",
+      "subtitle": "Your journey so far"
+    },
+    "loading": "Loading your data...",
+    "labels": {
+      "firstLaunch": "First Launch",
+      "lastActive": "Last Active"
+    },
+    "welcome": {
+      "new": "Welcome! 👋",
+      "returning": "Returning User ⭐"
+    }
+  },
+  "progress": {
+    "title": "Progress",
+    "subtitle": "Track your mathematical journey",
+    "metrics": {
+      "puzzlesSolved": "Puzzles Solved",
+      "puzzlesSolvedSubtitle": "Get started with your first puzzle!",
+      "streak": "Streak",
+      "streakSubtitle": "Solve daily to build momentum",
+      "level": "Level",
+      "levelSubtitle": "Just getting started"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "empty": "No achievements yet",
+      "emptySubtitle": "Start solving puzzles to unlock achievements"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure your preferences",
+    "theme": {
+      "title": "Theme",
+      "auto": "Auto (System)",
+      "autoDescription": "Follow system theme",
+      "light": "Light",
+      "lightDescription": "Always use light theme",
+      "dark": "Dark",
+      "darkDescription": "Always use dark theme"
+    },
+    "language": {
+      "title": "Language"
+    },
+    "data": {
+      "title": "App Data",
+      "resetButton": "Reset All Data"
+    }
+  },
+  "tabs": {
+    "home": "Home",
+    "progress": "Progress",
+    "settings": "Settings"
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert"
+  },
+  "time": {
+    "justNow": "Just now",
+    "minutesAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago",
+    "never": "Never",
+    "unknown": "Unknown",
+    "invalid": "Invalid date"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "reset": "Reset"
+  }
+}

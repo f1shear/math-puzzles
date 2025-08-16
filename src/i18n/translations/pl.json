@@ -1,0 +1,87 @@
+{
+  "app": {
+    "name": "Łamigłówki Matematyczne"
+  },
+  "home": {
+    "title": "Łamigłówki Matematyczne",
+    "subtitle": "Wyzwij swój umysł pięknymi łamigłówkami",
+    "status": {
+      "title": "Status Aplikacji",
+      "subtitle": "Twoja dotychczasowa podróż"
+    },
+    "loading": "Ładowanie twoich danych...",
+    "labels": {
+      "firstLaunch": "Pierwsze Uruchomienie",
+      "lastActive": "Ostatnia Aktywność"
+    },
+    "welcome": {
+      "new": "Witamy! 👋",
+      "returning": "Powracający Użytkownik ⭐"
+    }
+  },
+  "progress": {
+    "title": "Postęp",
+    "subtitle": "Śledź swoją matematyczną podróż",
+    "metrics": {
+      "puzzlesSolved": "Rozwiązane Łamigłówki",
+      "puzzlesSolvedSubtitle": "Zacznij od swojej pierwszej łamigłówki!",
+      "streak": "Seria",
+      "streakSubtitle": "Rozwiązuj codziennie, aby utrzymać tempo",
+      "level": "Poziom",
+      "levelSubtitle": "Dopiero zaczynasz"
+    },
+    "achievements": {
+      "title": "Osiągnięcia",
+      "empty": "Brak osiągnięć",
+      "emptySubtitle": "Zacznij rozwiązywać łamigłówki, aby odblokować osiągnięcia"
+    }
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "subtitle": "Skonfiguruj swoje preferencje",
+    "theme": {
+      "title": "Motyw",
+      "auto": "Automatyczny (System)",
+      "autoDescription": "Podążaj za motywem systemu",
+      "light": "Jasny",
+      "lightDescription": "Zawsze używaj jasnego motywu",
+      "dark": "Ciemny",
+      "darkDescription": "Zawsze używaj ciemnego motywu"
+    },
+    "language": {
+      "title": "Język"
+    },
+    "data": {
+      "title": "Dane Aplikacji",
+      "resetButton": "Resetuj Wszystkie Dane"
+    }
+  },
+  "tabs": {
+    "home": "Start",
+    "progress": "Postęp",
+    "settings": "Ustawienia"
+  },
+  "levels": {
+    "beginner": "Początkujący",
+    "intermediate": "Średniozaawansowany",
+    "advanced": "Zaawansowany",
+    "expert": "Ekspert"
+  },
+  "time": {
+    "justNow": "Właśnie teraz",
+    "minutesAgo": "{{count}}m temu",
+    "hoursAgo": "{{count}}h temu",
+    "daysAgo": "{{count}}d temu",
+    "never": "Nigdy",
+    "unknown": "Nieznane",
+    "invalid": "Nieprawidłowa data"
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Błąd",
+    "cancel": "Anuluj",
+    "confirm": "Potwierdź",
+    "save": "Zapisz",
+    "reset": "Resetuj"
+  }
+}

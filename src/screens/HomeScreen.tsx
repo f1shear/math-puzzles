@@ -4,10 +4,11 @@ import { StyleSheet } from 'react-native-unistyles';
 import { useAppSelector } from '../store/hooks';
 import { Typography } from '../components/ui';
 import { StatusCard } from '../components/home';
-import { APP_CONSTANTS } from '../constants/app';
+import { useTranslation } from '../hooks/useTranslation';
 
 const HomeScreen = () => {
   const { lastActive, isFirstLaunch, isLoaded } = useAppSelector((state) => state.app);
+  const { t } = useTranslation();
   const styles = stylesheet();
 
   return (
@@ -19,7 +20,7 @@ const HomeScreen = () => {
           textAlign="center"
           style={styles.title}
         >
-          {APP_CONSTANTS.CONTENT.HOME.TITLE}
+          {t('home.title')}
         </Typography>
         <Typography
           variant="subtitle"
@@ -27,7 +28,7 @@ const HomeScreen = () => {
           textAlign="center"
           style={styles.subtitle}
         >
-          {APP_CONSTANTS.CONTENT.HOME.SUBTITLE}
+          {t('home.subtitle')}
         </Typography>
 
         <StatusCard

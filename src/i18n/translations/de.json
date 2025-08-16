@@ -1,0 +1,87 @@
+{
+  "app": {
+    "name": "Mathe-Rätsel"
+  },
+  "home": {
+    "title": "Mathe-Rätsel",
+    "subtitle": "Fordere deinen Verstand mit schönen Rätseln heraus",
+    "status": {
+      "title": "App-Status",
+      "subtitle": "Deine bisherige Reise"
+    },
+    "loading": "Lade deine Daten...",
+    "labels": {
+      "firstLaunch": "Erster Start",
+      "lastActive": "Zuletzt Aktiv"
+    },
+    "welcome": {
+      "new": "Willkommen! 👋",
+      "returning": "Wiederkehrender Nutzer ⭐"
+    }
+  },
+  "progress": {
+    "title": "Fortschritt",
+    "subtitle": "Verfolge deine mathematische Reise",
+    "metrics": {
+      "puzzlesSolved": "Gelöste Rätsel",
+      "puzzlesSolvedSubtitle": "Beginne mit deinem ersten Rätsel!",
+      "streak": "Serie",
+      "streakSubtitle": "Löse täglich, um den Schwung zu behalten",
+      "level": "Level",
+      "levelSubtitle": "Gerade erst angefangen"
+    },
+    "achievements": {
+      "title": "Erfolge",
+      "empty": "Noch keine Erfolge",
+      "emptySubtitle": "Beginne Rätsel zu lösen, um Erfolge freizuschalten"
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Konfiguriere deine Einstellungen",
+    "theme": {
+      "title": "Design",
+      "auto": "Automatisch (System)",
+      "autoDescription": "Systemdesign folgen",
+      "light": "Hell",
+      "lightDescription": "Immer helles Design verwenden",
+      "dark": "Dunkel",
+      "darkDescription": "Immer dunkles Design verwenden"
+    },
+    "language": {
+      "title": "Sprache"
+    },
+    "data": {
+      "title": "App-Daten",
+      "resetButton": "Alle Daten Zurücksetzen"
+    }
+  },
+  "tabs": {
+    "home": "Start",
+    "progress": "Fortschritt",
+    "settings": "Einstellungen"
+  },
+  "levels": {
+    "beginner": "Anfänger",
+    "intermediate": "Fortgeschritten",
+    "advanced": "Erweitert",
+    "expert": "Experte"
+  },
+  "time": {
+    "justNow": "Gerade eben",
+    "minutesAgo": "vor {{count}}m",
+    "hoursAgo": "vor {{count}}h",
+    "daysAgo": "vor {{count}}d",
+    "never": "Nie",
+    "unknown": "Unbekannt",
+    "invalid": "Ungültiges Datum"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "save": "Speichern",
+    "reset": "Zurücksetzen"
+  }
+}

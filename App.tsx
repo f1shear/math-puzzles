@@ -14,10 +14,12 @@ import { Provider } from 'react-redux';
 import { useUnistyles } from 'react-native-unistyles';
 
 import './unistyles';
+import './src/i18n/config';
 import { store } from './src/store';
 import { useAppDispatch } from './src/store/hooks';
 import { loadAppData, saveLastActive } from './src/store/slices/appSlice';
 import { useAppTheme } from './src/hooks/useAppTheme';
+import { useTranslation } from './src/hooks/useTranslation';
 import { APP_CONSTANTS } from './src/constants/app';
 import HomeScreen from './src/screens/HomeScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
@@ -28,6 +30,7 @@ const Tab = createBottomTabNavigator();
 function AppContent() {
   const dispatch = useAppDispatch();
   const { theme: currentTheme, isDarkMode } = useAppTheme();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Load initial data from AsyncStorage
@@ -118,27 +121,27 @@ function AppContent() {
             },
             headerShown: false,
           })}>
-          <Tab.Screen 
-            name="Home" 
-            component={HomeScreen}
-            options={{
-              tabBarLabel: 'Home',
-            }}
-          />
-          <Tab.Screen 
-            name="Progress" 
-            component={ProgressScreen}
-            options={{
-              tabBarLabel: 'Progress',
-            }}
-          />
-          <Tab.Screen 
-            name="Settings" 
-            component={SettingsScreen}
-            options={{
-              tabBarLabel: 'Settings',
-            }}
-          />
+                           <Tab.Screen 
+                   name="Home" 
+                   component={HomeScreen}
+                   options={{
+                     tabBarLabel: t('tabs.home'),
+                   }}
+                 />
+                 <Tab.Screen 
+                   name="Progress" 
+                   component={ProgressScreen}
+                   options={{
+                     tabBarLabel: t('tabs.progress'),
+                   }}
+                 />
+                 <Tab.Screen 
+                   name="Settings" 
+                   component={SettingsScreen}
+                   options={{
+                     tabBarLabel: t('tabs.settings'),
+                   }}
+                 />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

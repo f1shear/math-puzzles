@@ -4,12 +4,13 @@ import { StyleSheet } from 'react-native-unistyles';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { changeTheme, resetAppData } from '../store/slices/appSlice';
 import { Section } from '../components/ui';
-import { ThemeSelector, DataManagement } from '../components/settings';
-import { APP_CONSTANTS } from '../constants/app';
+import { ThemeSelector, LanguageSelector, DataManagement } from '../components/settings';
+import { useTranslation } from '../hooks/useTranslation';
 
 const SettingsScreen = () => {
   const dispatch = useAppDispatch();
   const { theme: currentThemeState } = useAppSelector((state) => state.app);
+  const { t } = useTranslation();
   const styles = stylesheet();
 
   const handleThemeChange = (selectedTheme: 'light' | 'dark' | 'auto') => {
@@ -23,14 +24,18 @@ const SettingsScreen = () => {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Section
-        title={APP_CONSTANTS.CONTENT.SETTINGS.TITLE}
-        subtitle={APP_CONSTANTS.CONTENT.SETTINGS.SUBTITLE}
+        title={t('settings.title')}
+        subtitle={t('settings.subtitle')}
         spacing="large"
       >
         <ThemeSelector
           selectedTheme={currentThemeState}
           onThemeChange={handleThemeChange}
         />
+      </Section>
+
+      <Section spacing="medium">
+        <LanguageSelector />
       </Section>
 
       <Section spacing="medium">

@@ -3,34 +3,36 @@ import { ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Section } from '../components/ui';
 import { MetricCard, EmptyState } from '../components/progress';
+import { useTranslation } from '../hooks/useTranslation';
 import { APP_CONSTANTS } from '../constants/app';
 
 const ProgressScreen = () => {
+  const { t } = useTranslation();
   const styles = stylesheet();
 
   const metrics = [
     {
-      title: 'Puzzles Solved',
+      title: t('progress.metrics.puzzlesSolved'),
       value: APP_CONSTANTS.DEFAULT_METRICS.PUZZLES_SOLVED,
-      subtitle: 'Get started with your first puzzle!',
+      subtitle: t('progress.metrics.puzzlesSolvedSubtitle'),
     },
     {
-      title: 'Streak',
+      title: t('progress.metrics.streak'),
       value: `${APP_CONSTANTS.DEFAULT_METRICS.STREAK_DAYS} days`,
-      subtitle: 'Solve daily to build momentum',
+      subtitle: t('progress.metrics.streakSubtitle'),
     },
     {
-      title: 'Level',
-      value: APP_CONSTANTS.DEFAULT_METRICS.LEVEL,
-      subtitle: 'Just getting started',
+      title: t('progress.metrics.level'),
+      value: t(APP_CONSTANTS.DEFAULT_METRICS.LEVEL_KEY),
+      subtitle: t('progress.metrics.levelSubtitle'),
     },
   ];
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <Section
-        title={APP_CONSTANTS.CONTENT.PROGRESS.TITLE}
-        subtitle={APP_CONSTANTS.CONTENT.PROGRESS.SUBTITLE}
+        title={t('progress.title')}
+        subtitle={t('progress.subtitle')}
         spacing="large"
         style={styles.metricsSection}
       >
@@ -44,11 +46,11 @@ const ProgressScreen = () => {
         ))}
       </Section>
 
-      <Section title="Achievements">
+      <Section title={t('progress.achievements.title')}>
         <EmptyState
-          emoji={APP_CONSTANTS.CONTENT.PROGRESS.EMPTY_ACHIEVEMENTS.EMOJI}
-          title={APP_CONSTANTS.CONTENT.PROGRESS.EMPTY_ACHIEVEMENTS.TITLE}
-          subtitle={APP_CONSTANTS.CONTENT.PROGRESS.EMPTY_ACHIEVEMENTS.SUBTITLE}
+          emoji={APP_CONSTANTS.ACHIEVEMENTS_EMOJI}
+          title={t('progress.achievements.empty')}
+          subtitle={t('progress.achievements.emptySubtitle')}
         />
       </Section>
     </ScrollView>

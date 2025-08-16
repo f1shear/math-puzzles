@@ -3,32 +3,28 @@ import { View, TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Card, Typography } from '../ui';
 import { useTranslation } from '../../hooks/useTranslation';
-import { APP_CONSTANTS, ThemeOption } from '../../constants/app';
+import { LANGUAGE_OPTIONS, type SupportedLanguage } from '../../i18n/types';
 
-interface ThemeSelectorProps {
-  selectedTheme: string;
-  onThemeChange: (theme: 'light' | 'dark' | 'auto') => void;
-}
-
-export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
-  selectedTheme,
-  onThemeChange,
-}) => {
-  const { t } = useTranslation();
+export const LanguageSelector: React.FC = () => {
+  const { t, currentLanguage, changeLanguage } = useTranslation();
   const styles = stylesheet();
+
+  const handleLanguageChange = (language: SupportedLanguage) => {
+    changeLanguage(language);
+  };
 
   return (
     <Card>
       <Typography variant="title" weight="semibold" style={styles.title}>
-        {t('settings.theme.title')}
+        {t('settings.language.title')}
       </Typography>
       <View style={styles.optionsContainer}>
-        {APP_CONSTANTS.THEME_OPTIONS.map((themeOption) => (
-          <ThemeOptionSelector
-            key={themeOption.key}
-            option={themeOption}
-            isSelected={selectedTheme === themeOption.key}
-            onPress={() => onThemeChange(themeOption.key)}
+        {LANGUAGE_OPTIONS.map((languageOption) => (
+          <LanguageOption
+            key={languageOption.code}
+            option={languageOption}
+            isSelected={currentLanguage === languageOption.code}
+            onPress={() => handleLanguageChange(languageOption.code)}
           />
         ))}
       </View>
@@ -36,18 +32,17 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
   );
 };
 
-interface ThemeOptionProps {
-  option: ThemeOption;
+interface LanguageOptionProps {
+  option: typeof LANGUAGE_OPTIONS[number];
   isSelected: boolean;
   onPress: () => void;
 }
 
-const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
+const LanguageOption: React.FC<LanguageOptionProps> = ({
   option,
   isSelected,
   onPress,
 }) => {
-  const { t } = useTranslation();
   const styles = stylesheet();
 
   return (
@@ -65,14 +60,14 @@ const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
           weight="semibold"
           color={isSelected ? 'accent' : 'primary'}
         >
-          {t(option.labelKey)}
+          {option.name}
         </Typography>
         <Typography
           variant="caption"
           color={isSelected ? 'accent' : 'secondary'}
           style={styles.optionDescription}
         >
-          {t(option.descriptionKey)}
+          {option.nativeName}
         </Typography>
       </View>
       <View style={[

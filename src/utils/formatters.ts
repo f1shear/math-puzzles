@@ -1,15 +1,17 @@
+import type { TFunction } from '../i18n/types';
+
 /**
  * Formats a date string into a human-readable format
  */
-export const formatDate = (dateString: string | null): string => {
-  if (!dateString) return 'Never';
+export const formatDate = (dateString: string | null, t: TFunction): string => {
+  if (!dateString) return t('time.never');
 
   try {
     const date = new Date(dateString);
 
     // Check if date is valid
     if (isNaN(date.getTime())) {
-      return 'Invalid date';
+      return t('time.invalid');
     }
 
     const now = new Date();
@@ -20,12 +22,12 @@ export const formatDate = (dateString: string | null): string => {
     // Show relative time for recent dates
     if (diffInHours < 1) {
       const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
-      if (diffInMinutes < 1) return 'Just now';
-      return `${diffInMinutes}m ago`;
+      if (diffInMinutes < 1) return t('time.justNow');
+      return t('time.minutesAgo', { count: diffInMinutes });
     } else if (diffInHours < 24) {
-      return `${Math.floor(diffInHours)}h ago`;
+      return t('time.hoursAgo', { count: Math.floor(diffInHours) });
     } else if (diffInDays < 7) {
-      return `${Math.floor(diffInDays)}d ago`;
+      return t('time.daysAgo', { count: Math.floor(diffInDays) });
     }
 
     // For older dates, show formatted date
@@ -36,13 +38,13 @@ export const formatDate = (dateString: string | null): string => {
     });
   } catch (error) {
     console.warn('Error formatting date:', error);
-    return 'Unknown';
+    return t('time.unknown');
   }
 };
 
 /**
  * Formats a welcome message based on first launch status
  */
-export const formatWelcomeMessage = (isFirstLaunch: boolean): string => {
-  return isFirstLaunch ? 'Welcome! 👋' : 'Returning User ⭐';
+export const formatWelcomeMessage = (isFirstLaunch: boolean, t: TFunction): string => {
+  return isFirstLaunch ? t('home.welcome.new') : t('home.welcome.returning');
 };
