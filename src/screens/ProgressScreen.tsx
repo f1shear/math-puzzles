@@ -6,7 +6,6 @@ import { Section } from '../components/ui/Section';
 import { Card } from '../components/ui/Card';
 import { Caption } from '../components/ui/typography/Caption';
 import { Title } from '../components/ui/typography/Title';
-import { Label } from '../components/ui/typography/Label';
 import { Subtitle } from '../components/ui/typography/Subtitle';
 import { useTranslation } from '../hooks/useTranslation';
 import { APP_CONSTANTS } from '../constants/app';
@@ -44,18 +43,15 @@ const ProgressScreen = () => {
           <Card>
             {metrics.map((metric, index) => (
               <View key={index} style={styles.metricItem}>
-                <Caption weight="medium" color="secondary">
+                <Title weight="bold" color="secondary">
                   {metric.title}
-                </Caption>
+                </Title>
                 <Title 
                   weight="bold" 
                   color="accent"
                 >
                   {metric.value}
                 </Title>
-                <Label color="tertiary">
-                  {metric.subtitle}
-                </Label>
               </View>
             ))}
           </Card>
@@ -104,8 +100,9 @@ const stylesheet = () =>
     },
     metricItem: {
       flex: 1,
-      alignItems: 'center',
-      paddingHorizontal: theme.spacing(2),
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      paddingVertical: theme.spacing(2),
       gap: theme.spacing(2),
     },
 
