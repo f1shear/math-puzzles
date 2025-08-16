@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 import { Section } from '../components/ui/Section';
 import { Card } from '../components/ui/Card';
@@ -33,62 +34,67 @@ const ProgressScreen = () => {
   ];
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Section
-        title={t('progress.title')}
-        subtitle={t('progress.subtitle')}
-        spacing="medium"
-      >
-        <Card style={styles.metricsContainer}>
-          {metrics.map((metric, index) => (
-            <View key={index} style={styles.metricItem}>
-              <Caption weight="medium" color="secondary" style={styles.metricLabel}>
-                {metric.title}
-              </Caption>
-              <Title 
-                weight="bold" 
-                color="accent"
-                style={styles.metricValue}
-              >
-                {metric.value}
-              </Title>
-              <Label color="tertiary" style={styles.metricSubtitle}>
-                {metric.subtitle}
-              </Label>
-            </View>
-          ))}
-        </Card>
-      </Section>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+        <Section
+          title={t('progress.title')}
+          subtitle={t('progress.subtitle')}
+          spacing="medium"
+        >
+          <Card style={styles.metricsContainer}>
+            {metrics.map((metric, index) => (
+              <View key={index} style={styles.metricItem}>
+                <Caption weight="medium" color="secondary" style={styles.metricLabel}>
+                  {metric.title}
+                </Caption>
+                <Title 
+                  weight="bold" 
+                  color="accent"
+                  style={styles.metricValue}
+                >
+                  {metric.value}
+                </Title>
+                <Label color="tertiary" style={styles.metricSubtitle}>
+                  {metric.subtitle}
+                </Label>
+              </View>
+            ))}
+          </Card>
+        </Section>
 
-      <Section title={t('progress.achievements.title')} spacing="small">
-        <Card style={styles.emptyState}>
-          <Text style={styles.emoji}>
-            {APP_CONSTANTS.ACHIEVEMENTS_EMOJI}
-          </Text>
-          <Subtitle 
-            weight="semibold" 
-            textAlign="center"
-            style={styles.emptyTitle}
-          >
-            {t('progress.achievements.empty')}
-          </Subtitle>
-          <Caption 
-            color="secondary" 
-            textAlign="center"
-          >
-            {t('progress.achievements.emptySubtitle')}
-          </Caption>
-        </Card>
-      </Section>
-    </ScrollView>
+        <Section title={t('progress.achievements.title')} spacing="small">
+          <Card style={styles.emptyState}>
+            <Text style={styles.emoji}>
+              {APP_CONSTANTS.ACHIEVEMENTS_EMOJI}
+            </Text>
+            <Subtitle 
+              weight="semibold" 
+              textAlign="center"
+              style={styles.emptyTitle}
+            >
+              {t('progress.achievements.empty')}
+            </Subtitle>
+            <Caption 
+              color="secondary" 
+              textAlign="center"
+            >
+              {t('progress.achievements.emptySubtitle')}
+            </Caption>
+          </Card>
+        </Section>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    container: {
+    safeArea: {
       flex: 1,
       backgroundColor: theme.colors.background,
+    },
+    container: {
+      flex: 1,
     },
     content: {
       padding: theme.spacing(2),

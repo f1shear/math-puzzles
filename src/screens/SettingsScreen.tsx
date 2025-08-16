@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { changeTheme, resetAppData } from '../store/slices/appSlice';
@@ -24,47 +25,52 @@ const SettingsScreen = () => {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <CollapsibleSection
-        title={t('settings.theme.title')}
-        defaultExpanded={true}
-        style={styles.section}
-      >
-        <ThemeSelector
-          selectedTheme={currentThemeState}
-          onThemeChange={handleThemeChange}
-        />
-      </CollapsibleSection>
-
-      <CollapsibleSection
-        title={t('settings.language.title')}
-        defaultExpanded={false}
-        style={styles.section}
-      >
-        <LanguageSelector />
-      </CollapsibleSection>
-
-      <CollapsibleSection
-        title={t('settings.data.title')}
-        defaultExpanded={false}
-        style={styles.section}
-      >
-        <View style={styles.buttonContainer}>
-          <DeleteButton
-            title={t('settings.data.resetButton')}
-            onPress={handleResetApp}
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+        <CollapsibleSection
+          title={t('settings.theme.title')}
+          defaultExpanded={true}
+          style={styles.section}
+        >
+          <ThemeSelector
+            selectedTheme={currentThemeState}
+            onThemeChange={handleThemeChange}
           />
-        </View>
-      </CollapsibleSection>
-    </ScrollView>
+        </CollapsibleSection>
+
+        <CollapsibleSection
+          title={t('settings.language.title')}
+          defaultExpanded={false}
+          style={styles.section}
+        >
+          <LanguageSelector />
+        </CollapsibleSection>
+
+        <CollapsibleSection
+          title={t('settings.data.title')}
+          defaultExpanded={false}
+          style={styles.section}
+        >
+          <View style={styles.buttonContainer}>
+            <DeleteButton
+              title={t('settings.data.resetButton')}
+              onPress={handleResetApp}
+            />
+          </View>
+        </CollapsibleSection>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    container: {
+    safeArea: {
       flex: 1,
       backgroundColor: theme.colors.background,
+    },
+    container: {
+      flex: 1,
     },
     content: {
       padding: theme.spacing(2),

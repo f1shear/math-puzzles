@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 import { DisplayText } from '../components/ui/typography/DisplayText';
 import { Subtitle } from '../components/ui/typography/Subtitle';
@@ -10,34 +11,39 @@ const HomeScreen = () => {
   const styles = stylesheet();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <DisplayText
-          textAlign="center"
-          style={styles.title}
-        >
-          {t('home.title')}
-        </DisplayText>
-        <Subtitle
-          color="secondary"
-          textAlign="center"
-          style={styles.subtitle}
-        >
-          {t('home.subtitle')}
-        </Subtitle>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <DisplayText
+            textAlign="center"
+            style={styles.title}
+          >
+            {t('home.title')}
+          </DisplayText>
+          <Subtitle
+            color="secondary"
+            textAlign="center"
+            style={styles.subtitle}
+          >
+            {t('home.subtitle')}
+          </Subtitle>
+        </View>
+        <View style={styles.content}>
+          {/* TODO: Add puzzle content here */}
+        </View>
       </View>
-      <View style={styles.content}>
-        {/* TODO: Add puzzle content here */}
-      </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    container: {
+    safeArea: {
       flex: 1,
       backgroundColor: theme.colors.background,
+    },
+    container: {
+      flex: 1,
       padding: theme.spacing(2),
     },
     header: {
