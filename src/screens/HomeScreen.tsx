@@ -9,6 +9,7 @@ import { Title } from '../components/ui/typography/Title';
 import { Subtitle } from '../components/ui/typography/Subtitle';
 import { Body } from '../components/ui/typography/Body';
 import { PrimaryButton } from '../components/ui/buttons/PrimaryButton';
+import { TopicChip } from '../components/ui/TopicChip';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAppSelector } from '../store/hooks';
 import { selectUserLevel, selectUserTopics } from '../store/slices/userSlice';
@@ -35,11 +36,8 @@ const HomeScreen = () => {
   const userLevel = useAppSelector(selectUserLevel);
   const topicsCovered = useAppSelector(selectUserTopics);
 
-  const formatTopics = (topics: string[]) => {
-    if (topics.length === 0) return t('home.progress.noTopics');
-    if (topics.length <= 3) return topics.join(', ');
-    return `${topics.slice(0, 3).join(', ')} +${topics.length - 3} more`;
-  };
+  const displayTopics = topicsCovered.slice(0, 4); // Show max 4 topics
+  const remainingCount = Math.max(0, topicsCovered.length - 4);
 
   const handleStartQuiz = () => {
     navigation.navigate('Quiz');
@@ -63,13 +61,20 @@ const HomeScreen = () => {
               <Body text={t('home.progress.level')} color="secondary" weight="medium" />
               <Title text={userLevel.toString()} color="accent" weight="bold" />
             </View>
-            <View style={styles.progressItem}>
+            <View style={styles.topicsSection}>
               <Body text={t('home.progress.topicsCovered')} color="secondary" weight="medium" />
-              <Body
-                text={formatTopics(topicsCovered)}
-                weight="medium"
-                numberOfLines={2}
-              />
+              {topicsCovered.length === 0 ? (
+                <Body text={t('home.progress.noTopics')} weight="medium" />
+              ) : (
+                <View style={styles.topicsContainer}>
+                  {displayTopics.map((topic, index) => (
+                    <TopicChip key={`topic-${index}`} text={topic} />
+                  ))}
+                  {remainingCount > 0 && (
+                    <TopicChip text={`+${remainingCount} more`} />
+                  )}
+                </View>
+              )}
             </View>
           </View>
         </Card>
@@ -103,6 +108,14 @@ const stylesheet = () =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+      gap: theme.spacing(2),
+    },
+    topicsSection: {
+      gap: theme.spacing(2),
+    },
+    topicsContainer: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
       gap: theme.spacing(2),
     },
     content: {

@@ -10,6 +10,7 @@ import { Title } from '../components/ui/typography/Title';
 import { Body } from '../components/ui/typography/Body';
 import { PrimaryButton } from '../components/ui/buttons/PrimaryButton';
 import { SecondaryButton } from '../components/ui/buttons/SecondaryButton';
+import { TopicChip } from '../components/ui/TopicChip';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAppDispatch } from '../store/hooks';
 import { resetQuiz } from '../store/slices/quizSlice';
@@ -99,9 +100,7 @@ const QuizEndScreen = () => {
               <Body text={t('quiz.end.topicsCovered')} weight="bold" />
               <View style={styles.topicsList}>
                 {uniqueTopics.map((topic: string, index: number) => (
-                  <View key={`topic-${index}`} style={styles.topicChip}>
-                    <Body text={topic} color="accent" weight="medium" />
-                  </View>
+                  <TopicChip key={`topic-${index}`} text={topic} />
                 ))}
               </View>
             </View>
@@ -158,14 +157,6 @@ const stylesheet = () =>
       flexWrap: 'wrap',
       gap: theme.spacing(2),
       marginTop: theme.spacing(2),
-    },
-    topicChip: {
-      backgroundColor: theme.colors.primarySurface,
-      paddingHorizontal: theme.spacing(3),
-      paddingVertical: theme.spacing(1),
-      borderRadius: theme.borderRadius.full,
-      borderWidth: 1,
-      borderColor: theme.colors.primary,
     },
     buttonContainer: {
       gap: theme.spacing(3),
