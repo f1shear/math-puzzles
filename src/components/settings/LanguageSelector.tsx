@@ -55,14 +55,12 @@ const LanguageOption: React.FC<LanguageOptionProps> = ({
         <Body
           weight="semibold"
           color={isSelected ? 'accent' : 'primary'}
-        >
-          {option.name}
-        </Body>
+          text={option.name}
+        />
         <Caption
+          text={option.nativeName}
           color={isSelected ? 'accent' : 'secondary'}
-        >
-          {option.nativeName}
-        </Caption>
+        />
       </View>
       <View style={[
         styles.radio,

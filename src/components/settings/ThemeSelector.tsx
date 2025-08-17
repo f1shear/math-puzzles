@@ -59,14 +59,12 @@ const ThemeOptionSelector: React.FC<ThemeOptionProps> = ({
         <Body
           weight="semibold"
           color={isSelected ? 'accent' : 'primary'}
-        >
-          {t(option.labelKey)}
-        </Body>
+          text={t(option.labelKey)}
+        />
         <Caption
+          text={t(option.descriptionKey)}
           color={isSelected ? 'accent' : 'secondary'}
-        >
-          {t(option.descriptionKey)}
-        </Caption>
+        />
       </View>
       <View style={[
         styles.radio,

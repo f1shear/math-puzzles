@@ -3,7 +3,7 @@ import { Text, TextStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface SubtitleProps {
-  children: React.ReactNode;
+  text: string;
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'error';
   style?: TextStyle;
@@ -12,7 +12,7 @@ interface SubtitleProps {
 }
 
 export const Subtitle: React.FC<SubtitleProps> = ({
-  children,
+  text,
   weight = 'regular',
   color = 'secondary',
   style,
@@ -20,13 +20,13 @@ export const Subtitle: React.FC<SubtitleProps> = ({
   textAlign = 'left',
 }) => {
   const styles = stylesheet(weight, color, textAlign);
-  
+
   return (
-    <Text 
+    <Text
       style={[styles.text, style]}
       numberOfLines={numberOfLines}
     >
-      {children}
+      {text}
     </Text>
   );
 };

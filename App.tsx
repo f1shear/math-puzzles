@@ -56,7 +56,7 @@ function AppContent() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar 
+      <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={currentTheme.colors.background}
         translucent={Platform.OS === 'android'}
@@ -82,9 +82,9 @@ function AppContent() {
               const iconSymbol = focused ? iconConfig.focused : iconConfig.unfocused;
 
               return (
-                <Text 
-                  style={{ 
-                    color, 
+                <Text
+                  style={{
+                    color,
                     fontSize: size,
                     fontWeight: focused ? '600' : '400',
                   }}
@@ -120,22 +120,22 @@ function AppContent() {
             },
             headerShown: false,
           })}>
-                           <Tab.Screen 
-                   name="Home" 
+                           <Tab.Screen
+                   name="Home"
                    component={HomeScreen}
                    options={{
                      tabBarLabel: t('tabs.home'),
                    }}
                  />
-                 <Tab.Screen 
-                   name="Progress" 
+                 <Tab.Screen
+                   name="Progress"
                    component={ProgressScreen}
                    options={{
                      tabBarLabel: t('tabs.progress'),
                    }}
                  />
-                 <Tab.Screen 
-                   name="Settings" 
+                 <Tab.Screen
+                   name="Settings"
                    component={SettingsScreen}
                    options={{
                      tabBarLabel: t('tabs.settings'),

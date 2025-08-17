@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  TouchableOpacity, 
-  TouchableOpacityProps, 
-  ActivityIndicator 
+import {
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ActivityIndicator
 } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Body } from '../typography/Body';
@@ -26,9 +26,9 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 }) => {
   const styles = stylesheet(size);
   const isDisabled = disabled || loading;
-  
+
   const TextComponent = size === 'large' ? Subtitle : Body;
-  
+
   return (
     <TouchableOpacity
       style={[
@@ -42,9 +42,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
       {loading ? (
         <ActivityIndicator size="small" color="#FFFFFF" />
       ) : (
-        <TextComponent weight="semibold" style={styles.text}>
-          {title}
-        </TextComponent>
+        <TextComponent text={title} weight="semibold" style={styles.text} />
       )}
     </TouchableOpacity>
   );
@@ -54,21 +52,21 @@ const stylesheet = (size: ButtonSize) =>
   StyleSheet.create((theme) => {
     const getPadding = () => {
       switch (size) {
-        case 'small': return { 
-          paddingVertical: theme.spacing(1.5), 
-          paddingHorizontal: theme.spacing(2) 
+        case 'small': return {
+          paddingVertical: theme.spacing(1.5),
+          paddingHorizontal: theme.spacing(2)
         };
-        case 'medium': return { 
-          paddingVertical: theme.spacing(2), 
-          paddingHorizontal: theme.spacing(3) 
+        case 'medium': return {
+          paddingVertical: theme.spacing(2),
+          paddingHorizontal: theme.spacing(3)
         };
-        case 'large': return { 
-          paddingVertical: theme.spacing(3), 
-          paddingHorizontal: theme.spacing(4) 
+        case 'large': return {
+          paddingVertical: theme.spacing(3),
+          paddingHorizontal: theme.spacing(4)
         };
-        default: return { 
-          paddingVertical: theme.spacing(2), 
-          paddingHorizontal: theme.spacing(3) 
+        default: return {
+          paddingVertical: theme.spacing(2),
+          paddingHorizontal: theme.spacing(3)
         };
       }
     };

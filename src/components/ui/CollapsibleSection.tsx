@@ -51,13 +51,9 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
         activeOpacity={0.7}
       >
         <View style={styles.headerContent}>
-          <Title weight="semibold">
-            {title}
-          </Title>
+          <Title weight="semibold" text={title} />
           {subtitle && (
-            <Caption color="secondary">
-              {subtitle}
-            </Caption>
+            <Caption color="secondary" text={subtitle} />
           )}
         </View>
         <Animated.Text
@@ -94,7 +90,6 @@ const stylesheet = () =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingVertical: theme.spacing(2),
     },
     headerContent: {
       flex: 1,

@@ -22,7 +22,7 @@ export const loadAppData = createAsyncThunk(
     const lastActive = await StorageUtils.getString('lastActive');
     const isFirstLaunch = await StorageUtils.getBoolean('isFirstLaunch');
     const theme = await StorageUtils.getString('theme');
-    
+
     return {
       lastActive,
       isFirstLaunch: isFirstLaunch ?? true,

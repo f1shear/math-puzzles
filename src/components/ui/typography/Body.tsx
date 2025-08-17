@@ -3,28 +3,28 @@ import { Text } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface BodyProps {
-  children: React.ReactNode;
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'error';
   numberOfLines?: number;
   textAlign?: 'left' | 'center' | 'right';
+  text: string;
 }
 
 export const Body: React.FC<BodyProps> = ({
-  children,
   weight = 'regular',
   color = 'primary',
   numberOfLines,
   textAlign = 'left',
+  text,
 }) => {
   const styles = stylesheet(weight, color, textAlign);
-  
+
   return (
-    <Text 
+    <Text
       style={styles.text}
       numberOfLines={numberOfLines}
     >
-      {children}
+      {text}
     </Text>
   );
 };

@@ -6,32 +6,32 @@ const lightTheme = {
     background: '#FAFAFA',
     surface: '#FFFFFF',
     surfaceElevated: '#F8F8F8',
-    
+
     // Modern accent system inspired by Windows Metro
     primary: '#0078D4',        // Microsoft Blue
     primaryVariant: '#106EBE',
     accent: '#FF6B35',         // Vibrant orange accent
-    
+
     // Apple-inspired text hierarchy
     text: '#1C1C1E',           // Apple's primary text
     textSecondary: '#636366',   // Apple's secondary text
     textTertiary: '#8E8E93',   // Apple's tertiary text
-    
+
     // Semantic colors
     success: '#34C759',        // Apple green
     warning: '#FF9500',        // Apple orange
     error: '#FF3B30',          // Apple red
-    
+
     // UI elements
     border: '#D1D1D6',         // Apple's standard border
     borderLight: '#E5E5EA',    // Lighter border
-    
+
     // Tab bar - clean Windows Metro style
     tabBarBackground: 'rgba(255, 255, 255, 0.95)',
     tabBarBorder: '#E5E5EA',
     tabBarActive: '#0078D4',
     tabBarInactive: '#8E8E93',
-    
+
     // Overlays
     overlay: 'rgba(0, 0, 0, 0.4)',
     backdrop: 'rgba(0, 0, 0, 0.15)',
@@ -82,32 +82,32 @@ const darkTheme = {
     background: '#000000',
     surface: '#1C1C1E',
     surfaceElevated: '#2C2C2E',
-    
+
     // Brighter accents for dark mode
     primary: '#0099FF',        // Brighter Microsoft Blue
     primaryVariant: '#1BA1F2',
     accent: '#FF8C42',         // Warmer orange accent
-    
+
     // Apple dark mode text hierarchy
     text: '#FFFFFF',
     textSecondary: '#EBEBF5',
     textTertiary: '#8E8E93',
-    
+
     // Dark semantic colors
     success: '#30D158',
     warning: '#FF9F0A',
     error: '#FF453A',
-    
+
     // Dark UI elements
     border: '#38383A',
     borderLight: '#48484A',
-    
+
     // Dark tab bar - Windows Metro style
     tabBarBackground: 'rgba(28, 28, 30, 0.95)',
     tabBarBorder: '#38383A',
     tabBarActive: '#0099FF',
     tabBarInactive: '#8E8E93',
-    
+
     // Dark overlays
     overlay: 'rgba(0, 0, 0, 0.6)',
     backdrop: 'rgba(0, 0, 0, 0.3)',

@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
 interface CaptionProps {
-  children: React.ReactNode;
+  text: string;
   weight?: 'regular' | 'medium' | 'semibold' | 'bold';
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent' | 'error';
   numberOfLines?: number;
@@ -11,20 +11,20 @@ interface CaptionProps {
 }
 
 export const Caption: React.FC<CaptionProps> = ({
-  children,
+  text,
   weight = 'medium',
   color = 'secondary',
   numberOfLines,
   textAlign = 'left',
 }) => {
   const styles = stylesheet(weight, color, textAlign);
-  
+
   return (
-    <Text 
+    <Text
       style={styles.text}
       numberOfLines={numberOfLines}
     >
-      {children}
+      {text}
     </Text>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
+import { Screen } from '../components/ui/Screen';
 import { Section } from '../components/ui/Section';
 import { Card } from '../components/ui/Card';
 import { Caption } from '../components/ui/typography/Caption';
@@ -33,70 +33,51 @@ const ProgressScreen = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        <Section
-          title={t('progress.title')}
-          subtitle={t('progress.subtitle')}
-          spacing="medium"
-        >
-          <Card>
-            {metrics.map((metric, index) => (
-              <View key={index} style={styles.metricItem}>
-                <Title weight="bold" color="secondary">
-                  {metric.title}
-                </Title>
-                <Title 
-                  weight="bold" 
-                  color="accent"
-                >
-                  {metric.value}
-                </Title>
-              </View>
-            ))}
-          </Card>
-        </Section>
+    <Screen title={t('progress.title')}>
+      <View style={styles.subtitleContainer}>
+        <Subtitle text={t('progress.subtitle')} color="secondary" />
+      </View>
 
-        <Section title={t('progress.achievements.title')} spacing="small">
-          <Card>
-            <Text style={styles.emoji}>
-              {APP_CONSTANTS.ACHIEVEMENTS_EMOJI}
-            </Text>
-            <Subtitle 
-              weight="semibold" 
-              textAlign="center"
-            >
-              {t('progress.achievements.empty')}
-            </Subtitle>
-            <Caption 
-              color="secondary" 
-              textAlign="center"
-            >
-              {t('progress.achievements.emptySubtitle')}
-            </Caption>
-          </Card>
-        </Section>
-      </ScrollView>
-    </SafeAreaView>
+      <Section spacing="medium">
+        <Card>
+          {metrics.map((metric, index) => (
+            <View key={index} style={styles.metricItem}>
+              <Title text={metric.title} weight="bold" color="secondary" />
+              <Title
+                text={String(metric.value)}
+                weight="bold"
+                color="accent"
+              />
+            </View>
+          ))}
+        </Card>
+      </Section>
+
+      <Section title={t('progress.achievements.title')} spacing="small">
+        <Card>
+          <Text style={styles.emoji}>
+            {APP_CONSTANTS.ACHIEVEMENTS_EMOJI}
+          </Text>
+          <Subtitle
+            text={t('progress.achievements.empty')}
+            weight="semibold"
+            textAlign="center"
+          />
+          <Caption
+            text={t('progress.achievements.emptySubtitle')}
+            color="secondary"
+            textAlign="center"
+          />
+        </Card>
+      </Section>
+    </Screen>
   );
 };
 
 const stylesheet = () =>
   StyleSheet.create((theme) => ({
-    safeArea: {
-      flex: 1,
-      backgroundColor: theme.colors.background,
-    },
-    container: {
-      flex: 1,
-    },
-    content: {
-      padding: theme.spacing(4),
-    },
-    metricsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingVertical: theme.spacing(4),
+    subtitleContainer: {
+      marginBottom: theme.spacing(4),
     },
     metricItem: {
       flex: 1,
@@ -105,11 +86,9 @@ const stylesheet = () =>
       paddingVertical: theme.spacing(2),
       gap: theme.spacing(2),
     },
-
     emoji: {
       fontSize: 32,
     },
-
   }));
 
 export default ProgressScreen;
