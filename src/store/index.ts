@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import appReducer from './slices/appSlice';
+import userReducer from './slices/userSlice';
+import quizReducer from './slices/quizSlice';
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
+    user: userReducer,
+    quiz: quizReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
