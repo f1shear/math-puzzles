@@ -9,6 +9,7 @@ import React, { useEffect } from 'react';
 import { StatusBar, AppState, Platform, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 
@@ -23,13 +24,103 @@ import { APP_CONSTANTS } from './src/constants/app';
 import HomeScreen from './src/screens/HomeScreen';
 import ProgressScreen from './src/screens/ProgressScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import QuizScreen from './src/screens/QuizScreen';
+import QuizEndScreen from './src/screens/QuizEndScreen';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function TabNavigator() {
+  const { theme: currentTheme } = useAppTheme();
+  const { t } = useTranslation();
+
+  const getTabIcon = (routeName: string) => {
+    switch (routeName) {
+      case 'Home':
+        return APP_CONSTANTS.TAB_ICONS.HOME;
+      case 'Progress':
+        return APP_CONSTANTS.TAB_ICONS.PROGRESS;
+      case 'Settings':
+        return APP_CONSTANTS.TAB_ICONS.SETTINGS;
+      default:
+        return APP_CONSTANTS.TAB_ICONS.HOME;
+    }
+  };
+
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          const iconConfig = getTabIcon(route.name);
+          const iconSymbol = focused ? iconConfig.focused : iconConfig.unfocused;
+
+          return (
+            <Text
+              style={{
+                color,
+                fontSize: size,
+                fontWeight: focused ? '600' : '400',
+              }}
+            >
+              {iconSymbol}
+            </Text>
+          );
+        },
+        tabBarActiveTintColor: currentTheme.colors.tabBarActive,
+        tabBarInactiveTintColor: currentTheme.colors.tabBarInactive,
+        tabBarStyle: {
+          backgroundColor: currentTheme.colors.tabBarBackground,
+          borderTopColor: currentTheme.colors.tabBarBorder,
+          borderTopWidth: 0.5,
+          paddingTop: 8,
+          paddingBottom: Platform.OS === 'ios' ? 20 : 8,
+          height: Platform.OS === 'ios' ? 88 : 68,
+          ...(Platform.OS === 'ios' && {
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: -1 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+          }),
+        },
+        tabBarLabelStyle: {
+          fontSize: currentTheme.typography.fontSize.xs,
+          fontWeight: currentTheme.typography.fontWeight.medium,
+          marginTop: 4,
+        },
+        headerShown: false,
+      })}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: t('tabs.home'),
+        }}
+      />
+      <Tab.Screen
+        name="Progress"
+        component={ProgressScreen}
+        options={{
+          tabBarLabel: t('tabs.progress'),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarLabel: t('tabs.settings'),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 function AppContent() {
   const dispatch = useAppDispatch();
   const { theme: currentTheme, isDarkMode } = useAppTheme();
-  const { t } = useTranslation();
 
   useEffect(() => {
     // Load initial data from AsyncStorage
@@ -62,86 +153,28 @@ function AppContent() {
         translucent={Platform.OS === 'android'}
       />
       <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              const getTabIcon = (routeName: string) => {
-                switch (routeName) {
-                  case 'Home':
-                    return APP_CONSTANTS.TAB_ICONS.HOME;
-                  case 'Progress':
-                    return APP_CONSTANTS.TAB_ICONS.PROGRESS;
-                  case 'Settings':
-                    return APP_CONSTANTS.TAB_ICONS.SETTINGS;
-                  default:
-                    return APP_CONSTANTS.TAB_ICONS.HOME;
-                }
-              };
-
-              const iconConfig = getTabIcon(route.name);
-              const iconSymbol = focused ? iconConfig.focused : iconConfig.unfocused;
-
-              return (
-                <Text
-                  style={{
-                    color,
-                    fontSize: size,
-                    fontWeight: focused ? '600' : '400',
-                  }}
-                >
-                  {iconSymbol}
-                </Text>
-              );
-            },
-            tabBarActiveTintColor: currentTheme.colors.tabBarActive,
-            tabBarInactiveTintColor: currentTheme.colors.tabBarInactive,
-            tabBarStyle: {
-              backgroundColor: currentTheme.colors.tabBarBackground,
-              borderTopColor: currentTheme.colors.tabBarBorder,
-              borderTopWidth: 0.5,
-              paddingTop: 8,
-              paddingBottom: Platform.OS === 'ios' ? 20 : 8,
-              height: Platform.OS === 'ios' ? 88 : 68,
-              ...(Platform.OS === 'ios' && {
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: -1 },
-                shadowOpacity: 0.1,
-                shadowRadius: 4,
-              }),
-            },
-            tabBarLabelStyle: {
-              fontSize: currentTheme.typography.fontSize.xs,
-              fontWeight: currentTheme.typography.fontWeight.medium,
-              marginTop: 4,
-            },
+        <Stack.Navigator
+          screenOptions={{
             headerShown: false,
-          })}>
-                           <Tab.Screen
-                   name="Home"
-                   component={HomeScreen}
-                   options={{
-                     tabBarLabel: t('tabs.home'),
-                   }}
-                 />
-                 <Tab.Screen
-                   name="Progress"
-                   component={ProgressScreen}
-                   options={{
-                     tabBarLabel: t('tabs.progress'),
-                   }}
-                 />
-                 <Tab.Screen
-                   name="Settings"
-                   component={SettingsScreen}
-                   options={{
-                     tabBarLabel: t('tabs.settings'),
-                   }}
-                 />
-        </Tab.Navigator>
+          }}
+        >
+          <Stack.Screen name="TabNavigator" component={TabNavigator} />
+          <Stack.Screen
+            name="Quiz"
+            component={QuizScreen}
+            options={{
+              presentation: 'modal',
+            }}
+          />
+          <Stack.Screen
+            name="QuizEnd"
+            component={QuizEndScreen}
+            options={{
+              presentation: 'modal',
+              gestureEnabled: false,
+            }}
+          />
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );

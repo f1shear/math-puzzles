@@ -1,17 +1,34 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Screen } from '../components/ui/Screen';
 import { Card } from '../components/ui/Card';
 import { Title } from '../components/ui/typography/Title';
 import { Subtitle } from '../components/ui/typography/Subtitle';
 import { Body } from '../components/ui/typography/Body';
+import { PrimaryButton } from '../components/ui/buttons/PrimaryButton';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAppSelector } from '../store/hooks';
 import { selectUserLevel, selectUserTopics } from '../store/slices/userSlice';
 
+type RootStackParamList = {
+  TabNavigator: undefined;
+  Quiz: undefined;
+  QuizEnd: {
+    totalQuestions: number;
+    correctAnswers: number;
+    topicsCovered: string[];
+    levelGained: number;
+  };
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const HomeScreen = () => {
   const { t } = useTranslation();
+  const navigation = useNavigation<NavigationProp>();
   const styles = stylesheet();
 
   // Get user progress data
@@ -22,6 +39,10 @@ const HomeScreen = () => {
     if (topics.length === 0) return t('home.progress.noTopics');
     if (topics.length <= 3) return topics.join(', ');
     return `${topics.slice(0, 3).join(', ')} +${topics.length - 3} more`;
+  };
+
+  const handleStartQuiz = () => {
+    navigation.navigate('Quiz');
   };
 
   return (
@@ -55,7 +76,12 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.content}>
-        {/* TODO: Add puzzle content here */}
+        <View style={styles.quizButtonContainer}>
+          <PrimaryButton
+            title={t('home.startQuiz')}
+            onPress={handleStartQuiz}
+          />
+        </View>
       </View>
     </Screen>
   );
@@ -81,6 +107,9 @@ const stylesheet = () =>
     },
     content: {
       flex: 1,
+    },
+    quizButtonContainer: {
+      marginTop: theme.spacing(6),
     },
   }));
 

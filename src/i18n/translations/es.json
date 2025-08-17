@@ -5,6 +5,7 @@
   "home": {
     "title": "Rompecabezas Matemáticos",
     "subtitle": "Desafía tu mente con hermosos rompecabezas",
+    "startQuiz": "Comenzar Quiz",
     "status": {
       "title": "Estado de la App",
       "subtitle": "Tu viaje hasta ahora"
@@ -23,6 +24,33 @@
     "welcome": {
       "new": "¡Bienvenido! 👋",
       "returning": "Usuario Recurrente ⭐"
+    }
+  },
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Pregunta {{current}} de {{total}}",
+    "enterAnswer": "Introduce tu respuesta",
+    "matchLeft": "Emparejar:",
+    "matchRight": "Con:",
+    "submit": "Enviar",
+    "next": "Siguiente",
+    "finish": "Finalizar Quiz",
+    "correct": "¡Correcto! ✓",
+    "incorrect": "Incorrecto ✗",
+    "noQuestions": "No hay preguntas disponibles",
+    "end": {
+      "title": "Quiz Completado",
+      "subtitle": "¡Buen trabajo completando el quiz!",
+      "excellent": "¡Excelente trabajo!",
+      "good": "¡Buen trabajo!",
+      "okay": "¡Buen intento!",
+      "keepTrying": "¡Sigue practicando!",
+      "correctAnswers": "Respuestas Correctas",
+      "accuracy": "Precisión",
+      "levelGained": "Nivel Ganado",
+      "topicsCovered": "Temas cubiertos en este quiz:",
+      "takeAnother": "Hacer Otro Quiz",
+      "goHome": "Ir a Inicio"
     }
   },
   "progress": {
@@ -91,6 +119,7 @@
     "cancel": "Cancelar",
     "confirm": "Confirmar",
     "save": "Guardar",
-    "reset": "Restablecer"
+    "reset": "Restablecer",
+    "goBack": "Volver"
   }
 }

@@ -22,6 +22,11 @@ const lightTheme = {
     warning: '#FF9500',        // Apple orange
     error: '#FF3B30',          // Apple red
 
+    // Surface colors for states
+    primarySurface: 'rgba(0, 120, 212, 0.1)',    // Light blue tint
+    successSurface: 'rgba(52, 199, 89, 0.1)',    // Light green tint
+    errorSurface: 'rgba(255, 59, 48, 0.1)',      // Light red tint
+
     // UI elements
     border: '#D1D1D6',         // Apple's standard border
     borderLight: '#E5E5EA',    // Lighter border
@@ -70,6 +75,7 @@ const lightTheme = {
   borderRadius: {
     sm: 6,
     base: 8,
+    md: 10,
     lg: 12,
     xl: 16,
     full: 9999,
@@ -97,6 +103,11 @@ const darkTheme = {
     success: '#30D158',
     warning: '#FF9F0A',
     error: '#FF453A',
+
+    // Surface colors for states (dark mode)
+    primarySurface: 'rgba(0, 153, 255, 0.15)',   // Light blue tint for dark
+    successSurface: 'rgba(48, 209, 88, 0.15)',   // Light green tint for dark
+    errorSurface: 'rgba(255, 69, 58, 0.15)',     // Light red tint for dark
 
     // Dark UI elements
     border: '#38383A',
@@ -146,6 +157,7 @@ const darkTheme = {
   borderRadius: {
     sm: 6,
     base: 8,
+    md: 10,
     lg: 12,
     xl: 16,
     full: 9999,

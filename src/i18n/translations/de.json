@@ -5,6 +5,7 @@
   "home": {
     "title": "Mathe-Rätsel",
     "subtitle": "Fordere deinen Verstand mit schönen Rätseln heraus",
+    "startQuiz": "Quiz Starten",
     "status": {
       "title": "App-Status",
       "subtitle": "Deine bisherige Reise"
@@ -23,6 +24,33 @@
     "welcome": {
       "new": "Willkommen! 👋",
       "returning": "Wiederkehrender Nutzer ⭐"
+    }
+  },
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Frage {{current}} von {{total}}",
+    "enterAnswer": "Gib deine Antwort ein",
+    "matchLeft": "Verbinde:",
+    "matchRight": "Mit:",
+    "submit": "Absenden",
+    "next": "Weiter",
+    "finish": "Quiz Beenden",
+    "correct": "Richtig! ✓",
+    "incorrect": "Falsch ✗",
+    "noQuestions": "Keine Fragen verfügbar",
+    "end": {
+      "title": "Quiz Abgeschlossen",
+      "subtitle": "Großartige Arbeit beim Abschließen des Quiz!",
+      "excellent": "Ausgezeichnete Arbeit!",
+      "good": "Gute Arbeit!",
+      "okay": "Schöner Versuch!",
+      "keepTrying": "Weiter üben!",
+      "correctAnswers": "Richtige Antworten",
+      "accuracy": "Genauigkeit",
+      "levelGained": "Level Gewonnen",
+      "topicsCovered": "In diesem Quiz behandelte Themen:",
+      "takeAnother": "Noch ein Quiz",
+      "goHome": "Nach Hause"
     }
   },
   "progress": {
@@ -91,6 +119,7 @@
     "cancel": "Abbrechen",
     "confirm": "Bestätigen",
     "save": "Speichern",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "goBack": "Zurück"
   }
 }

@@ -5,6 +5,7 @@
   "home": {
     "title": "Łamigłówki Matematyczne",
     "subtitle": "Wyzwij swój umysł pięknymi łamigłówkami",
+    "startQuiz": "Rozpocznij Quiz",
     "status": {
       "title": "Status Aplikacji",
       "subtitle": "Twoja dotychczasowa podróż"
@@ -23,6 +24,33 @@
     "welcome": {
       "new": "Witamy! 👋",
       "returning": "Powracający Użytkownik ⭐"
+    }
+  },
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Pytanie {{current}} z {{total}}",
+    "enterAnswer": "Wprowadź odpowiedź",
+    "matchLeft": "Dopasuj:",
+    "matchRight": "Do:",
+    "submit": "Wyślij",
+    "next": "Dalej",
+    "finish": "Zakończ Quiz",
+    "correct": "Prawidłowo! ✓",
+    "incorrect": "Nieprawidłowo ✗",
+    "noQuestions": "Brak dostępnych pytań",
+    "end": {
+      "title": "Quiz Zakończony",
+      "subtitle": "Wspaniała robota przy kończeniu quizu!",
+      "excellent": "Wspaniała praca!",
+      "good": "Dobra robota!",
+      "okay": "Niezla próba!",
+      "keepTrying": "Kontynuuj ćwiczenia!",
+      "correctAnswers": "Prawidłowe Odpowiedzi",
+      "accuracy": "Dokładność",
+      "levelGained": "Zdobyty Poziom",
+      "topicsCovered": "Tematy omówione w tym quizie:",
+      "takeAnother": "Zrób Kolejny Quiz",
+      "goHome": "Idź do Domu"
     }
   },
   "progress": {
@@ -91,6 +119,7 @@
     "cancel": "Anuluj",
     "confirm": "Potwierdź",
     "save": "Zapisz",
-    "reset": "Resetuj"
+    "reset": "Resetuj",
+    "goBack": "Wróć"
   }
 }

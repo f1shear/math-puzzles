@@ -5,6 +5,7 @@
   "home": {
     "title": "Math Puzzles",
     "subtitle": "Challenge your mind with beautiful puzzles",
+    "startQuiz": "Start Quiz",
     "status": {
       "title": "App Status",
       "subtitle": "Your journey so far"
@@ -23,6 +24,33 @@
     "welcome": {
       "new": "Welcome! 👋",
       "returning": "Returning User ⭐"
+    }
+  },
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Question {{current}} of {{total}}",
+    "enterAnswer": "Enter your answer",
+    "matchLeft": "Match:",
+    "matchRight": "With:",
+    "submit": "Submit",
+    "next": "Next",
+    "finish": "Finish Quiz",
+    "correct": "Correct! ✓",
+    "incorrect": "Incorrect ✗",
+    "noQuestions": "No questions available",
+    "end": {
+      "title": "Quiz Complete",
+      "subtitle": "Great job completing the quiz!",
+      "excellent": "Excellent work!",
+      "good": "Good job!",
+      "okay": "Nice try!",
+      "keepTrying": "Keep practicing!",
+      "correctAnswers": "Correct Answers",
+      "accuracy": "Accuracy",
+      "levelGained": "Level Gained",
+      "topicsCovered": "Topics covered in this quiz:",
+      "takeAnother": "Take Another Quiz",
+      "goHome": "Go Home"
     }
   },
   "progress": {
@@ -91,6 +119,7 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "save": "Save",
-    "reset": "Reset"
+    "reset": "Reset",
+    "goBack": "Go Back"
   }
 }
