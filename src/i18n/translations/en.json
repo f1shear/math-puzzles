@@ -9,6 +9,12 @@
       "title": "App Status",
       "subtitle": "Your journey so far"
     },
+    "progress": {
+      "title": "Your Progress",
+      "level": "Level",
+      "topicsCovered": "Topics Covered",
+      "noTopics": "No topics yet"
+    },
     "loading": "Loading your data...",
     "labels": {
       "firstLaunch": "First Launch",

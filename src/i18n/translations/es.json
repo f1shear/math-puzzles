@@ -9,6 +9,12 @@
       "title": "Estado de la App",
       "subtitle": "Tu viaje hasta ahora"
     },
+    "progress": {
+      "title": "Tu Progreso",
+      "level": "Nivel",
+      "topicsCovered": "Temas Cubiertos",
+      "noTopics": "Aún no hay temas"
+    },
     "loading": "Cargando tus datos...",
     "labels": {
       "firstLaunch": "Primer Inicio",

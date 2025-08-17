@@ -9,6 +9,12 @@
       "title": "Status Aplikacji",
       "subtitle": "Twoja dotychczasowa podróż"
     },
+    "progress": {
+      "title": "Twój Postęp",
+      "level": "Poziom",
+      "topicsCovered": "Omówione Tematy",
+      "noTopics": "Jeszcze brak tematów"
+    },
     "loading": "Ładowanie twoich danych...",
     "labels": {
       "firstLaunch": "Pierwsze Uruchomienie",
