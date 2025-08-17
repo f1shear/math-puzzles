@@ -10,7 +10,7 @@ import { StatusBar, AppState, Platform, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 
 import './unistyles';
@@ -33,6 +33,7 @@ const Stack = createNativeStackNavigator();
 function TabNavigator() {
   const { theme: currentTheme } = useAppTheme();
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
 
   const getTabIcon = (routeName: string) => {
     switch (routeName) {
@@ -73,8 +74,8 @@ function TabNavigator() {
           borderTopColor: currentTheme.colors.tabBarBorder,
           borderTopWidth: 0.5,
           paddingTop: 8,
-          paddingBottom: Platform.OS === 'ios' ? 20 : 8,
-          height: Platform.OS === 'ios' ? 88 : 68,
+          paddingBottom: Math.max(8, insets.bottom + 4),
+          height: 68 + Math.max(0, insets.bottom),
           ...(Platform.OS === 'ios' && {
             position: 'absolute',
             bottom: 0,

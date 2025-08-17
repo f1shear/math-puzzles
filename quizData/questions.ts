@@ -1,6 +1,6 @@
-import type { Question } from '../src/engine/quizEngine';
+import type { MultipleChoiceQuestion } from '../src/engine/quizEngine';
 
-export const questionsData: Question[] = [
+export const questionsData: MultipleChoiceQuestion[] = [
   {
     id: "mc_basic_add_1",
     topic: "addition",
@@ -32,13 +32,19 @@ export const questionsData: Question[] = [
     correctOptionId: "b"
   },
   {
-    id: "fib_multiplication_1",
+    id: "mc_multiplication_1",
     topic: "multiplication",
     level: 2,
-    type: "fillInBlank",
-    prompt: "6 × 7 = ?",
+    type: "multipleChoice",
+    prompt: "What is 6 × 7?",
     explanation: "6 times 7 equals 42. You can think of it as adding 6 seven times: 6+6+6+6+6+6+6 = 42.",
-    acceptableAnswers: ["42", "forty-two", "forty two"]
+    options: [
+      { id: "a", text: "35" },
+      { id: "b", text: "42" },
+      { id: "c", text: "48" },
+      { id: "d", text: "49" }
+    ],
+    correctOptionId: "b"
   },
   {
     id: "mc_fractions_1",
@@ -56,20 +62,19 @@ export const questionsData: Question[] = [
     correctOptionId: "b"
   },
   {
-    id: "match_operations_1",
+    id: "mc_operations_1",
     topic: "operations",
     level: 4,
-    type: "match",
-    prompt: "Match each operation with its result:",
-    explanation: "Basic arithmetic operations: 5+3=8, 10-4=6, 3×3=9, 12÷4=3.",
-    left: ["5 + 3", "10 - 4", "3 × 3", "12 ÷ 4"],
-    right: ["6", "8", "3", "9"],
-    correctPairs: {
-      "5 + 3": "8",
-      "10 - 4": "6",
-      "3 × 3": "9",
-      "12 ÷ 4": "3"
-    }
+    type: "multipleChoice",
+    prompt: "What is 5 + 3?",
+    explanation: "5 plus 3 equals 8. This is basic addition.",
+    options: [
+      { id: "a", text: "6" },
+      { id: "b", text: "8" },
+      { id: "c", text: "7" },
+      { id: "d", text: "9" }
+    ],
+    correctOptionId: "b"
   },
   {
     id: "mc_algebra_1",
@@ -87,13 +92,19 @@ export const questionsData: Question[] = [
     correctOptionId: "c"
   },
   {
-    id: "fib_geometry_1",
+    id: "mc_geometry_1",
     topic: "geometry",
     level: 6,
-    type: "fillInBlank",
-    prompt: "A triangle has angles of 60°, 60°, and ?°",
+    type: "multipleChoice",
+    prompt: "A triangle has angles of 60°, 60°, and how many degrees?",
     explanation: "The sum of angles in any triangle is always 180°. So 60° + 60° + 60° = 180°.",
-    acceptableAnswers: ["60", "60°", "sixty", "sixty degrees"]
+    options: [
+      { id: "a", text: "30°" },
+      { id: "b", text: "45°" },
+      { id: "c", text: "60°" },
+      { id: "d", text: "90°" }
+    ],
+    correctOptionId: "c"
   },
   {
     id: "mc_decimals_1",
@@ -126,13 +137,19 @@ export const questionsData: Question[] = [
     correctOptionId: "b"
   },
   {
-    id: "fib_advanced_algebra_1",
+    id: "mc_advanced_algebra_1",
     topic: "algebra",
     level: 10,
-    type: "fillInBlank",
+    type: "multipleChoice",
     prompt: "If 2x - 3 = 7, then x = ?",
     explanation: "Solve: 2x - 3 = 7. Add 3 to both sides: 2x = 10. Divide by 2: x = 5.",
-    acceptableAnswers: ["5", "five"]
+    options: [
+      { id: "a", text: "3" },
+      { id: "b", text: "4" },
+      { id: "c", text: "5" },
+      { id: "d", text: "7" }
+    ],
+    correctOptionId: "c"
   },
   {
     id: "mc_quadratics_1",
@@ -150,29 +167,34 @@ export const questionsData: Question[] = [
     correctOptionId: "b"
   },
   {
-    id: "match_trig_1",
+    id: "mc_trigonometry_1",
     topic: "trigonometry",
     level: 15,
-    type: "match",
-    prompt: "Match each trigonometric value:",
-    explanation: "Standard angle values: sin(30°)=1/2, cos(60°)=1/2, tan(45°)=1, sin(90°)=1.",
-    left: ["sin(30°)", "cos(60°)", "tan(45°)", "sin(90°)"],
-    right: ["1", "1/2", "√3/2", "0"],
-    correctPairs: {
-      "sin(30°)": "1/2",
-      "cos(60°)": "1/2",
-      "tan(45°)": "1",
-      "sin(90°)": "1"
-    }
+    type: "multipleChoice",
+    prompt: "What is sin(30°)?",
+    explanation: "sin(30°) = 1/2. This is one of the standard trigonometric values.",
+    options: [
+      { id: "a", text: "1/2" },
+      { id: "b", text: "√3/2" },
+      { id: "c", text: "1" },
+      { id: "d", text: "0" }
+    ],
+    correctOptionId: "a"
   },
   {
-    id: "fib_calculus_1",
+    id: "mc_calculus_1",
     topic: "calculus",
     level: 18,
-    type: "fillInBlank",
+    type: "multipleChoice",
     prompt: "What is the derivative of x³?",
     explanation: "Using the power rule: d/dx(x³) = 3x². The power comes down and the exponent decreases by 1.",
-    acceptableAnswers: ["3x²", "3x^2", "3*x^2", "3 * x^2"]
+    options: [
+      { id: "a", text: "x²" },
+      { id: "b", text: "3x²" },
+      { id: "c", text: "x³" },
+      { id: "d", text: "3x" }
+    ],
+    correctOptionId: "b"
   },
   {
     id: "mc_statistics_1",

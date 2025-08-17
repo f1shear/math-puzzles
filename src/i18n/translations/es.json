@@ -29,10 +29,7 @@
   "quiz": {
     "title": "Quiz",
     "questionProgress": "Pregunta {{current}} de {{total}}",
-    "enterAnswer": "Introduce tu respuesta",
-    "matchLeft": "Emparejar:",
-    "matchRight": "Con:",
-    "submit": "Enviar",
+
     "next": "Siguiente",
     "finish": "Finalizar Quiz",
     "correct": "¡Correcto! ✓",

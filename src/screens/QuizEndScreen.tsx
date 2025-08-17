@@ -65,7 +65,7 @@ const QuizEndScreen = () => {
   };
 
   return (
-    <Screen title={t('quiz.end.title')}>
+    <Screen title={t('quiz.end.title')} scrollable={false}>
       <View style={styles.container}>
         <Card variant="elevated">
           <View style={styles.scoreContainer}>

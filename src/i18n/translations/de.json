@@ -29,10 +29,7 @@
   "quiz": {
     "title": "Quiz",
     "questionProgress": "Frage {{current}} von {{total}}",
-    "enterAnswer": "Gib deine Antwort ein",
-    "matchLeft": "Verbinde:",
-    "matchRight": "Mit:",
-    "submit": "Absenden",
+
     "next": "Weiter",
     "finish": "Quiz Beenden",
     "correct": "Richtig! ✓",
