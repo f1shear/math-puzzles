@@ -65,14 +65,11 @@ const QuizEndScreen = () => {
   };
 
   return (
-    <Screen title={t('quiz.end.title')} scrollable={false}>
+    <Screen title={t('quiz.end.title')} scrollable={true}>
       <View style={styles.container}>
         <Card variant="elevated">
           <View style={styles.scoreContainer}>
-            <View style={styles.emojiContainer}>
-              <Title text={getScoreEmoji()} />
-            </View>
-            <Title text={getScoreMessage()} weight="bold" color="accent" />
+            <Title text={getScoreEmoji() + ' ' + getScoreMessage()} weight="bold" color="accent" />
             <Body text={t('quiz.end.subtitle')} color="secondary" textAlign="center" />
           </View>
 
@@ -127,20 +124,15 @@ const stylesheet = () =>
     container: {
       flex: 1,
       justifyContent: 'center',
-      paddingHorizontal: theme.spacing(2),
     },
     scoreContainer: {
       alignItems: 'center',
-      marginBottom: theme.spacing(6),
-    },
-    emojiContainer: {
-      marginBottom: theme.spacing(3),
+      marginBottom: theme.spacing(4),
     },
     statsContainer: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      marginBottom: theme.spacing(6),
-      paddingVertical: theme.spacing(4),
+      paddingVertical: theme.spacing(2),
       borderTopWidth: 1,
       borderBottomWidth: 1,
       borderColor: theme.colors.borderLight,
@@ -150,7 +142,10 @@ const stylesheet = () =>
       gap: theme.spacing(1),
     },
     topicsContainer: {
-      marginBottom: theme.spacing(6),
+      paddingVertical: theme.spacing(2),
+      borderTopWidth: 1,
+      borderBottomWidth: 1,
+      borderColor: theme.colors.borderLight,
     },
     topicsList: {
       flexDirection: 'row',
@@ -159,7 +154,8 @@ const stylesheet = () =>
       marginTop: theme.spacing(2),
     },
     buttonContainer: {
-      gap: theme.spacing(3),
+      paddingVertical: theme.spacing(2),
+      gap: theme.spacing(2),
     },
   }));
 
